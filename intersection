@@ -1,0 +1,49 @@
+me=$(basename $0)
+
+usage="
+
+NAME
+  ${me} - Set intersection. 
+
+SYNOPSIS
+  ${me} [OPTIONS] setA setB
+
+DESCRIPTION
+  ${me} outputs the intersection of two sets. 
+
+OPTIONS
+  -h  Displays help message.
+
+AUTHOR
+  Implementation by Berend M. Tober based on article by Peteris Krumins at 
+
+  http://www.catonmat.net/blog/set-operations-in-unix-shell/
+
+
+"
+
+infile1="-"
+infile2="-"
+
+while [[ $# -gt 0 ]]
+do
+  case "${1}" in
+    -h)
+      echo "${usage}"
+      exit
+      ;;
+    -*)
+      echo "Invalid option '${1}'"
+      exit
+      ;;
+    *)
+      infile1="${1--}"
+      infile2="${2--}"
+      shift 2
+      ;;
+  esac
+  shift
+done  
+
+
+comm -12 <(members "${infile1}") <(members "${infile2}")

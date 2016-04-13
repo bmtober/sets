@@ -1,0 +1,21 @@
+. assertion
+
+echo "Testing equal"
+
+[[ -d results ]] || mkdir results
+
+../equal data/A data/B; echo $? > results/equal.1
+../equal data/B data/B; echo $? > results/equal.2
+../equal data/C data/B; echo $? > results/equal.3
+../equal data/C data/C; echo $? > results/equal.4
+
+echo
+assert 'diff expected/equal.1 results/equal.1 &> /dev/null'
+assert 'diff expected/equal.2 results/equal.2 &> /dev/null'
+assert 'diff expected/equal.3 results/equal.3 &> /dev/null'
+assert 'diff expected/equal.4 results/equal.4 &> /dev/null'
+
+echo
+echo "PASS: ${success_count}"
+echo "FAIL: ${failure_count}"
+

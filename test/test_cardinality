@@ -1,0 +1,19 @@
+. assertion
+
+echo "Testing cardinality"
+
+[[ -d results ]] || mkdir results
+
+../cardinality data/A > results/cardinality.1
+../cardinality data/B > results/cardinality.2
+../cardinality data/C > results/cardinality.3
+
+echo
+assert 'diff expected/cardinality.1 results/cardinality.1 &> /dev/null'
+assert 'diff expected/cardinality.2 results/cardinality.2 &> /dev/null'
+assert 'diff expected/cardinality.3 results/cardinality.3 &> /dev/null'
+
+echo
+echo "PASS: ${success_count}"
+echo "FAIL: ${failure_count}"
+

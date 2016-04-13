@@ -1,0 +1,24 @@
+. assertion
+
+echo "Testing intersection"
+
+[[ -d results ]] || mkdir results
+
+../intersection data/A data/B > results/intersection.1
+../intersection data/B data/B > results/intersection.2
+../intersection data/C data/B > results/intersection.3
+../intersection data/C data/C > results/intersection.4
+../intersection data/B data/A > results/intersection.5
+
+echo
+assert 'diff expected/intersection.1 results/intersection.1 &> /dev/null'
+assert 'diff expected/intersection.2 results/intersection.2 &> /dev/null'
+assert 'diff expected/intersection.3 results/intersection.3 &> /dev/null'
+assert 'diff expected/intersection.4 results/intersection.4 &> /dev/null'
+assert 'diff expected/intersection.5 results/intersection.5 &> /dev/null'
+
+
+echo
+echo "PASS: ${success_count}"
+echo "FAIL: ${failure_count}"
+

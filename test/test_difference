@@ -1,0 +1,27 @@
+. assertion
+
+echo "Testing difference"
+
+[[ -d results ]] || mkdir results
+
+../difference data/A data/B > results/difference.1
+../difference data/B data/B > results/difference.2
+../difference data/C data/B > results/difference.3
+../difference data/C data/C > results/difference.4
+../difference data/A data/D > results/difference.5
+../difference data/A data/E > results/difference.6
+../difference data/E data/A > results/difference.7
+
+echo
+assert 'diff expected/difference.1 results/difference.1 &> /dev/null'
+assert 'diff expected/difference.2 results/difference.2 &> /dev/null'
+assert 'diff expected/difference.3 results/difference.3 &> /dev/null'
+assert 'diff expected/difference.4 results/difference.4 &> /dev/null'
+assert 'diff expected/difference.5 results/difference.5 &> /dev/null'
+assert 'diff expected/difference.6 results/difference.6 &> /dev/null'
+assert 'diff expected/difference.7 results/difference.7 &> /dev/null'
+
+echo
+echo "PASS: ${success_count}"
+echo "FAIL: ${failure_count}"
+

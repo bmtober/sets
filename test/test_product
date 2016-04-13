@@ -1,0 +1,17 @@
+. assertion
+
+echo "Testing product"
+
+[[ -d results ]] || mkdir results
+
+../product data/A data/B > results/product.1
+../product data/B data/C > results/product.2
+
+echo
+assert 'diff expected/product.1 results/product.1 &> /dev/null'
+assert 'diff expected/product.2 results/product.2 &> /dev/null'
+
+echo
+echo "PASS: ${success_count}"
+echo "FAIL: ${failure_count}"
+

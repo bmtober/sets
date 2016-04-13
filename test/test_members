@@ -1,0 +1,19 @@
+. assertion
+
+echo "Testing members"
+
+[[ -d results ]] || mkdir results
+
+../members data/A > results/members.1
+../members data/B > results/members.2
+../members data/C > results/members.3
+
+echo
+assert 'diff expected/members.1 results/members.1 &> /dev/null'
+assert 'diff expected/members.2 results/members.2 &> /dev/null'
+assert 'diff expected/members.3 results/members.3 &> /dev/null'
+
+echo
+echo "PASS: ${success_count}"
+echo "FAIL: ${failure_count}"
+

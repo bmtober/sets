@@ -1,0 +1,24 @@
+. assertion
+
+echo "Testing union"
+
+[[ -d results ]] || mkdir results
+
+../union data/A data/B > results/union.1
+../union data/B data/B > results/union.2
+../union data/C data/B > results/union.3
+../union data/C data/C > results/union.4
+../union data/B data/A > results/union.5
+
+echo
+assert 'diff expected/union.1 results/union.1 &> /dev/null'
+assert 'diff expected/union.2 results/union.2 &> /dev/null'
+assert 'diff expected/union.3 results/union.3 &> /dev/null'
+assert 'diff expected/union.4 results/union.4 &> /dev/null'
+assert 'diff expected/union.5 results/union.5 &> /dev/null'
+
+
+echo
+echo "PASS: ${success_count}"
+echo "FAIL: ${failure_count}"
+

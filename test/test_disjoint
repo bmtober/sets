@@ -1,0 +1,23 @@
+. assertion
+
+echo "Testing disjoint"
+
+[[ -d results ]] || mkdir results
+
+../disjoint data/A data/B; echo $? > results/disjoint.1
+../disjoint data/B data/B; echo $? > results/disjoint.2
+../disjoint data/C data/B; echo $? > results/disjoint.3
+../disjoint data/C data/C; echo $? > results/disjoint.4
+../disjoint data/A data/D; echo $? > results/disjoint.5
+
+echo
+assert 'diff expected/disjoint.1 results/disjoint.1 &> /dev/null'
+assert 'diff expected/disjoint.2 results/disjoint.2 &> /dev/null'
+assert 'diff expected/disjoint.3 results/disjoint.3 &> /dev/null'
+assert 'diff expected/disjoint.4 results/disjoint.4 &> /dev/null'
+assert 'diff expected/disjoint.5 results/disjoint.5 &> /dev/null'
+
+echo
+echo "PASS: ${success_count}"
+echo "FAIL: ${failure_count}"
+

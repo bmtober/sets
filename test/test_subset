@@ -1,0 +1,27 @@
+. assertion
+
+echo "Testing subset"
+
+[[ -d results ]] || mkdir results
+
+../subset data/A data/B; echo $? > results/subset.1
+../subset data/B data/B; echo $? > results/subset.2
+../subset data/C data/B; echo $? > results/subset.3
+../subset data/C data/C; echo $? > results/subset.4
+../subset data/A data/D; echo $? > results/subset.5
+../subset data/A data/E; echo $? > results/subset.6
+../subset data/E data/A; echo $? > results/subset.7
+
+echo
+assert 'diff expected/subset.1 results/subset.1 &> /dev/null'
+assert 'diff expected/subset.2 results/subset.2 &> /dev/null'
+assert 'diff expected/subset.3 results/subset.3 &> /dev/null'
+assert 'diff expected/subset.4 results/subset.4 &> /dev/null'
+assert 'diff expected/subset.5 results/subset.5 &> /dev/null'
+assert 'diff expected/subset.6 results/subset.6 &> /dev/null'
+assert 'diff expected/subset.7 results/subset.7 &> /dev/null'
+
+echo
+echo "PASS: ${success_count}"
+echo "FAIL: ${failure_count}"
+
