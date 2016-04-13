@@ -1,5 +1,7 @@
 . assertion
 
+PATH="../:$PATH"
+
 echo "Testing cardinality"
 
 [[ -d results ]] || mkdir results

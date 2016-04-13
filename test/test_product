@@ -1,5 +1,7 @@
 . assertion
 
+PATH="../:$PATH"
+
 echo "Testing product"
 
 [[ -d results ]] || mkdir results

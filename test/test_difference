@@ -1,5 +1,7 @@
 . assertion
 
+PATH="../:$PATH"
+
 echo "Testing difference"
 
 [[ -d results ]] || mkdir results

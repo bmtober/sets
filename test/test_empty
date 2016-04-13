@@ -1,5 +1,7 @@
 . assertion
 
+PATH="../:$PATH"
+
 echo "Testing empty"
 
 [[ -d results ]] || mkdir results
@@ -7,11 +9,15 @@ echo "Testing empty"
 ../empty data/A; echo $? > results/empty.1
 ../empty data/B; echo $? > results/empty.2
 ../empty data/C; echo $? > results/empty.3
+../empty data/D; echo $? > results/empty.4
+../empty data/E; echo $? > results/empty.5
 
 echo
 assert 'diff expected/empty.1 results/empty.1 &> /dev/null'
 assert 'diff expected/empty.2 results/empty.2 &> /dev/null'
 assert 'diff expected/empty.3 results/empty.3 &> /dev/null'
+assert 'diff expected/empty.4 results/empty.4 &> /dev/null'
+assert 'diff expected/empty.5 results/empty.5 &> /dev/null'
 
 echo
 echo "PASS: ${success_count}"

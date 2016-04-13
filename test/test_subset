@@ -1,5 +1,7 @@
 . assertion
 
+PATH="../:$PATH"
+
 echo "Testing subset"
 
 [[ -d results ]] || mkdir results

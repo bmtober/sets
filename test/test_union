@@ -1,5 +1,7 @@
 . assertion
 
+PATH="../:$PATH"
+
 echo "Testing union"
 
 [[ -d results ]] || mkdir results

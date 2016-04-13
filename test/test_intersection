@@ -1,5 +1,7 @@
 . assertion
 
+PATH="../:$PATH"
+
 echo "Testing intersection"
 
 [[ -d results ]] || mkdir results
