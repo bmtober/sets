@@ -1,0 +1,89 @@
+#
+# This is wicked cool.
+# 
+# You remember the formulas for combining probabilities? Well this is
+# where they come from.
+# 
+# Let's review
+# 
+# Given independent events X and Y, if the probability associated with
+# event X is P(X) and for Y is P(Y), then the probability of the combined
+# event "X and Y" is simply the product
+# 
+#   P(X and Y) = P(X) P(Y)
+# 
+# Similarly, the probability of the combined event "X or Y" (which is
+# understood to mean "X or Y or both") is the attenuated sum
+# 
+#   P(X or Y) = P(X) + P(Y) - P(X and Y)
+# 
+# The "and" operation above is, for sets, the "intersection", and the "or"
+# operation is "union".
+# 
+# So if we model the event X as an event with probability P(X) = 0.3
+# and the event Y with probability P(Y) = 0.4, for example, the combined
+# probabilities will be
+# 
+#   P(X and Y) = 0.12
+# 
+#   P(X or Y) = 0.58
+# 
+# We model the events by drawing random numbers between 1 and 100,000
+# (without replacement) for each event.
+# 
+# shuf -n 30000 -i 1-100000 > X
+# shuf -n 40000 -i 1-100000 > Y
+# 
+# Note that this result is stocastic, so any trial might possibly fail, so
+# we run the trials a number of times and average. It still might fail, but
+# with low probability, so run the test several times.:
+
+echo "Testing probability"
+
+. assertion
+
+PATH="../:$PATH"
+
+# Initialize precision
+echo "4k" > results/probability.1
+echo "4k" > results/probability.2
+
+[[ -d results ]] || mkdir results
+
+trap 'rm X Y' EXIT
+
+# Run ten trials
+for i in {1..10} 
+do
+  shuf -n 30000 -i 1-100000 > X
+  shuf -n 40000 -i 1-100000 > Y
+  intersection X Y | cardinality >> results/probability.1
+  union X Y        | cardinality >> results/probability.2
+done
+
+# Add the ten trial samples
+for i in {1..9} 
+do
+  echo "+" >> results/probability.1
+  echo "+" >> results/probability.2
+done
+
+# Normalize
+echo "1000000/p" >> results/probability.1
+echo "1000000/p" >> results/probability.2
+
+# Compute average of intersection and union trials
+i=$(dc results/probability.1)
+u=$(dc results/probability.2)
+
+# Test for averages to be within a "close" range of expected values of
+# 0.12 and 0.58
+assert '[ $(echo "0.119 < $i" | bc) -eq 1 ]' 
+assert '[ $(echo "0.121 > $i" | bc) -eq 1 ]' 
+assert '[ $(echo "0.579 < $u" | bc) -eq 1 ]' 
+assert '[ $(echo "0.581 > $u" | bc) -eq 1 ]' 
+
+echo
+echo "PASS: ${success_count}"
+echo "FAIL: ${failure_count}"
+
