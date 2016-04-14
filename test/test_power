@@ -1,0 +1,24 @@
+. assertion
+
+PATH="../:$PATH"
+
+echo "Testing power"
+
+[[ -d results ]] || mkdir results
+
+../power data/A > results/power.1
+../power data/B > results/power.2
+../power data/C > results/power.3
+printf "%s\n%s\n%s\n" "a" "b" "c" | power > results/power.4
+
+echo
+assert 'diff expected/power.1 results/power.1 &> /dev/null'
+assert 'diff expected/power.2 results/power.2 &> /dev/null'
+assert 'diff expected/power.3 results/power.3 &> /dev/null'
+assert 'diff expected/power.4 results/power.4 &> /dev/null'
+
+
+echo
+echo "PASS: ${success_count}"
+echo "FAIL: ${failure_count}"
+
