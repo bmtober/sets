@@ -4,7 +4,7 @@
 # You remember the formulas for combining probabilities? Well this is
 # where they come from.
 # 
-# Let's review
+# Let's review.
 # 
 # Given independent events X and Y, if the probability associated with
 # event X is P(X) and for Y is P(Y), then the probability of the combined
@@ -36,7 +36,7 @@
 # 
 # Note that this result is stocastic, so any trial might possibly fail, so
 # we run the trials a number of times and average. It still might fail, but
-# with low probability, so run the test several times.:
+# with low probability, so run the test several times:
 
 echo "Testing probability"
 
