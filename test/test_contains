@@ -1,0 +1,25 @@
+. assertion
+
+PATH="../:$PATH"
+
+echo "Testing contains"
+
+[[ -d results ]] || mkdir results
+
+../contains "milk" data/A > results/contains.1
+../contains "milk" data/B > results/contains.2
+../contains "milk" data/C > results/contains.3
+../contains "milk" data/E > results/contains.4
+../contains "mil"  data/A > results/contains.5
+
+echo
+assert 'diff expected/contains.1 results/contains.1 &> /dev/null'
+assert 'diff expected/contains.2 results/contains.2 &> /dev/null'
+assert 'diff expected/contains.3 results/contains.3 &> /dev/null'
+assert 'diff expected/contains.4 results/contains.4 &> /dev/null'
+assert 'diff expected/contains.5 results/contains.5 &> /dev/null'
+
+echo
+echo "PASS: ${success_count}"
+echo "FAIL: ${failure_count}"
+
