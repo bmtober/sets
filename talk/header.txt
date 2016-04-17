@@ -1,0 +1,9 @@
+= Sets and Vectors
+:author:    Berend Tober <btober@computer.org>
+:copyright: 2016, Berend Tober
+:backend:   slidy
+:max-width: 60em
+:data-uri:
+:icons:
+
+
