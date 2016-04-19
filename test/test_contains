@@ -6,11 +6,11 @@ echo "Testing contains"
 
 [[ -d results ]] || mkdir results
 
-../contains "milk" data/A > results/contains.1
-../contains "milk" data/B > results/contains.2
-../contains "milk" data/C > results/contains.3
-../contains "milk" data/E > results/contains.4
-../contains "mil"  data/A > results/contains.5
+../contains "milk" data/A; echo $? > results/contains.1
+../contains "milk" data/B; echo $? > results/contains.2
+../contains "milk" data/C; echo $? > results/contains.3
+../contains "milk" data/E; echo $? > results/contains.4
+../contains "mil"  data/A; echo $? > results/contains.5
 
 echo
 assert 'diff expected/contains.1 results/contains.1 &> /dev/null'
