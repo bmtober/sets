@@ -45,5 +45,4 @@ do
   shift
 done  
 
-
-comm -12 <(members "${infile1}") <(members "${infile2}")
+comm -12 <(cat "${infile1}" | members) <(cat "${infile2}" | members)
