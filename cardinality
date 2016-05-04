@@ -38,8 +38,11 @@ do
       echo "Invalid option '${1}'"
       exit
       ;;
+    *)
+      infile="${1--}"
+      shift
+      ;;
   esac
-  infile="${1--}"
   shift
 done  
 
