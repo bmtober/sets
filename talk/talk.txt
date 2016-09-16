@@ -3,54 +3,96 @@
 
 == What is a Set
 
+A collection of arbitrary objects:
 ..................................................
+$ text{Actors} = {text{alice}, text{bob}, text{cindy}, text{david}} $
+
+$ text{Password components} = {text{horse}, text{battery}, text{staple}} $
+..................................................
+
+== Set Membership
+
+..................................................
+
+$ text{alice} in text{Actors} $
+
+$ text{correct} notin text{Password components} $ 
+
 ..................................................
 
 == Empty Set
 
 ..................................................
+$ {} $
 ..................................................
 
-
-== Set Membership (Contains)
-
-..................................................
-..................................................
 
 
 == Cardinality
 
 ..................................................
-..................................................
+$ |text{Actors}| = 4 $
 
+$ |text{Password components}| = 3 $ 
 
-== Set Equality
-
-..................................................
+$ |{}| = 0 $
 ..................................................
 
 
 == Subset (Includes)
 
 ..................................................
+$ A sube B iff x in A => x in B $
+
+$ {text{alice}, text{bob}} sube {text{alice}, text{bob}, text{cindy}, text{david}} $
+
+$ {text{battery}} sube {text{battery}, text{staple}} sube {text{horse}, text{battery}, text{staple}} $
 ..................................................
 
 
-== Intersection
+== Set Equality
 
 ..................................................
+$ A = B iff A sube B and B sube A $
+..................................................
+
+== Proper Subset
+
+..................................................
+$ A sub B iff A sube B and A != B $
 ..................................................
 
 
 == Union
 
 ..................................................
+$ A uu B = {x | x in A or x in B } $
+
+$ text{Actors} uu text{Password components} = {text{alice}, text{bob}, text{cindy}, 
+  text{david}, text{horse}, text{battery}, text{staple}} $
+
 ..................................................
+
+
+
+
+== Intersection
+
+..................................................
+$ A nn B = {x | x in A and x in B } $
+
+$ {text{alice}, text{bob}, text{cindy}} nn {text{bob}, text{cindy}, text{david}} = {text{cindy}}$
+
+..................................................
+
 
 
 == Disjoint
 
 ..................................................
+$ A nn B = {} $
+
+$ text{Actors} uu text{Password components} = {} $
 ..................................................
 
 
