@@ -20,7 +20,7 @@ $ B = {text{butter}, text{bacon}, text{sausage}, text{ham}, text{eggs}, text{bre
 
 $ text{milk} in A  $
 
-$ text{juice} notin B $
+$ text{milk} notin B $
 
 
 ..................................................
@@ -55,8 +55,14 @@ $ X sube Y iff x in X => x in Y $
 
 $ {text{butter}, text{bacon}} sube 
  {text{butter}, text{bacon}, text{sausage}, text{ham}, text{eggs}, text{bread}} $
-
 ..................................................
+
+
+.Note
+
+$ |X| le |Y| $
+
+$ X sube X $
 
 
 == Set Equality
@@ -65,12 +71,24 @@ $ {text{butter}, text{bacon}} sube
 $ X = Y iff X sube Y and Y sube X $
 ..................................................
 
+That is, $X$ and $Y$ have exactly the same membership, and
+consequently, $ |X| = |Y|$.
+
 == Proper Subset
 
 ..................................................
 $ X sub Y iff X sube Y and X != Y $
-..................................................
 
+Note
+
+$ |X| < |Y| $
+
+$ B = {text{butter}, text{bacon}, text{sausage}, text{ham}, text{eggs}, text{bread}} $
+
+$ F = {text{butter}, text{bacon}} $
+
+$ F sub B $ since all members of $F$ are members of $B$ but $F != B$.
+..................................................
 
 == Union
 
@@ -145,22 +163,48 @@ $ B - A = {text{bacon}, text{butter}, text{ham}, text{sausage}} $
 ..................................................
 $ D = {text{ham}, text{steak}, text{chicken}, text{fish}} $
 
-$ E = {text{milk}, text{milk}, text{bread}, text{eggs}} $
+$ F = {
+text{butter}, text{bacon}, 
+} $
 
-$ D xx E = 
+$ D xx F = 
 {
-text{(chicken, bread)}, text{(chicken, eggs)}, text{(chicken, milk)}, text{(fish, bread)}, 
-
-text{(fish, eggs)}, text{(fish, milk)}, text{(ham, bread)}, text{(ham, eggs)}, 
-
-text{(ham, milk)}, text{(steak, bread)}, text{(steak, eggs)}, text{(steak, milk)}, 
+text{(chicken, bacon)}, 
+text{(chicken, butter)},
+text{(fish, bacon)},
+text{(fish, butter)},
+text{(ham, bacon)},
+text{(ham, butter)},
+text{(steak, bacon)},
+text{(steak, butter)}
 }$
+
 ..................................................
 
 
 == Power Set
 
 ..................................................
+$ D = {text{ham}, text{steak}, text{chicken}, text{fish}} $
+
+$text{power(D)} = {
+text{{ham}},
+text{{steak	ham}},
+text{{steak}},
+text{{chicken	ham}},
+text{{chicken	steak	ham}},
+text{{chicken	steak}},
+text{{chicken}},
+text{{fish	ham}},
+text{{fish	steak	ham}},
+text{{fish	steak}},
+text{{fish	chicken	ham}},
+text{{fish	chicken	steak	ham}},
+text{{fish	chicken	steak}},
+text{{fish	chicken}},
+text{{fish}},
+text{{}}
+} $
 ..................................................
 
 
@@ -239,18 +283,6 @@ Recall Re =  TP/(TP + FN)
 ..................................................
 
 ..................................................
-text{milk}
-text{juice}
-text{bread}
-text{jam}
-text{eggs}
-
-text{butter}
-text{bacon}
-text{sausage}
-text{ham}
-text{eggs}
-text{bread}
 ..................................................
 
 
