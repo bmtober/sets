@@ -5,18 +5,23 @@
 
 A collection of arbitrary objects:
 ..................................................
-$ text{Actors} = {text{alice}, text{bob}, text{cindy}, text{david}} $
+$ A = {text{milk}, text{juice}, text{bread}, text{jam}, text{eggs}} $
 
-$ text{Password components} = {text{horse}, text{battery}, text{staple}} $
+$ B = {text{butter}, text{bacon}, text{sausage}, text{ham}, text{eggs}, text{bread}} $
 ..................................................
 
 == Set Membership
 
 ..................................................
 
-$ text{alice} in text{Actors} $
+$ A = {text{milk}, text{juice}, text{bread}, text{jam}, text{eggs}} $
 
-$ text{correct} notin text{Password components} $ 
+$ B = {text{butter}, text{bacon}, text{sausage}, text{ham}, text{eggs}, text{bread}} $
+
+$ text{milk} in A  $
+
+$ text{juice} notin B $
+
 
 ..................................................
 
@@ -31,9 +36,13 @@ $ {} $
 == Cardinality
 
 ..................................................
-$ |text{Actors}| = 4 $
+$ A = {text{milk}, text{juice}, text{bread}, text{jam}, text{eggs}} $
 
-$ |text{Password components}| = 3 $ 
+$ B = {text{butter}, text{bacon}, text{sausage}, text{ham}, text{eggs}, text{bread}} $
+
+$ |A| = 5 $
+
+$ |B| = 6 $ 
 
 $ |{}| = 0 $
 ..................................................
@@ -42,34 +51,37 @@ $ |{}| = 0 $
 == Subset (Includes)
 
 ..................................................
-$ A sube B iff x in A => x in B $
+$ X sube Y iff x in X => x in Y $
 
-$ {text{alice}, text{bob}} sube {text{alice}, text{bob}, text{cindy}, text{david}} $
+$ {text{butter}, text{bacon}} sube 
+ {text{butter}, text{bacon}, text{sausage}, text{ham}, text{eggs}, text{bread}} $
 
-$ {text{battery}} sube {text{battery}, text{staple}} sube {text{horse}, text{battery}, text{staple}} $
 ..................................................
 
 
 == Set Equality
 
 ..................................................
-$ A = B iff A sube B and B sube A $
+$ X = Y iff X sube Y and Y sube X $
 ..................................................
 
 == Proper Subset
 
 ..................................................
-$ A sub B iff A sube B and A != B $
+$ X sub Y iff X sube Y and X != Y $
 ..................................................
 
 
 == Union
 
 ..................................................
-$ A uu B = {x | x in A or x in B } $
+$ A = {text{milk}, text{juice}, text{bread}, text{jam}, text{eggs}} $
 
-$ text{Actors} uu text{Password components} = {text{alice}, text{bob}, text{cindy}, 
-  text{david}, text{horse}, text{battery}, text{staple}} $
+$ B = {text{butter}, text{bacon}, text{sausage}, text{ham}, text{eggs}, text{bread}} $
+
+$ A uu B = {x | x in A or x in B } 
+
+ = {text{bacon}, text{bread}, text{butter}, text{eggs}, text{ham}, text{jam}, text{juice}, text{milk}, text{sausage}} $
 
 ..................................................
 
@@ -79,9 +91,13 @@ $ text{Actors} uu text{Password components} = {text{alice}, text{bob}, text{cind
 == Intersection
 
 ..................................................
-$ A nn B = {x | x in A and x in B } $
+$ A = {text{milk}, text{juice}, text{bread}, text{jam}, text{eggs}} $
 
-$ {text{alice}, text{bob}, text{cindy}} nn {text{bob}, text{cindy}, text{david}} = {text{cindy}}$
+$ B = {text{butter}, text{bacon}, text{sausage}, text{ham}, text{eggs}, text{bread}} $
+
+$ A nn B = {x | x in A and x in B } 
+ = {text{bread}, text{eggs}} $
+
 
 ..................................................
 
@@ -90,27 +106,55 @@ $ {text{alice}, text{bob}, text{cindy}} nn {text{bob}, text{cindy}, text{david}}
 == Disjoint
 
 ..................................................
-$ A nn B = {} $
+$ A = {text{milk}, text{juice}, text{bread}, text{jam}, text{eggs}} $
 
-$ text{Actors} uu text{Password components} = {} $
+$ D = {text{ham}, text{steak}, text{chicken}, text{fish}} $
+
+$ A nn D = {} $
+
 ..................................................
 
 
 == Symmetric Difference
 
 ..................................................
+$ A = {text{milk}, text{juice}, text{bread}, text{jam}, text{eggs}} $
+
+$ B = {text{butter}, text{bacon}, text{sausage}, text{ham}, text{eggs}, text{bread}} $
+
+$ A Delta B = (A uu B) - (A nn B) = 
+{text{bacon}, text{butter}, text{ham}, text{jam}, text{juice}, text{milk}, text{sausage}} $
 ..................................................
 
 
-== Complement
+== Relative Complement
 
 ..................................................
+$ A = {text{milk}, text{juice}, text{bread}, text{jam}, text{eggs}} $
+
+$ B = {text{butter}, text{bacon}, text{sausage}, text{ham}, text{eggs}, text{bread}} $
+
+$ A - B = {text{jam}, text{juice}, text{milk}} $
+
+$ B - A = {text{bacon}, text{butter}, text{ham}, text{sausage}} $
 ..................................................
 
 
 == Cross Product
 
 ..................................................
+$ D = {text{ham}, text{steak}, text{chicken}, text{fish}} $
+
+$ E = {text{milk}, text{milk}, text{bread}, text{eggs}} $
+
+$ D xx E = 
+{
+text{(chicken, bread)}, text{(chicken, eggs)}, text{(chicken, milk)}, text{(fish, bread)}, 
+
+text{(fish, eggs)}, text{(fish, milk)}, text{(ham, bread)}, text{(ham, eggs)}, 
+
+text{(ham, milk)}, text{(steak, bread)}, text{(steak, eggs)}, text{(steak, milk)}, 
+}$
 ..................................................
 
 
@@ -192,6 +236,21 @@ Recall Re =  TP/(TP + FN)
 == Applications of Vectors
 
 ..................................................
+..................................................
+
+..................................................
+text{milk}
+text{juice}
+text{bread}
+text{jam}
+text{eggs}
+
+text{butter}
+text{bacon}
+text{sausage}
+text{ham}
+text{eggs}
+text{bread}
 ..................................................
 
 

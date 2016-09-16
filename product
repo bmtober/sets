@@ -46,6 +46,6 @@ members "${infile1}" | while read i
 do
   members "${infile2}" | while read j
   do
-    echo "${i} ${j}"
+    echo "(${i}, ${j})"
   done
 done
