@@ -224,16 +224,60 @@ text{{}}
 
 == Applications of Set Theory
 
-=== Mining Association Rules
+..................................................
+..................................................
+
+== Mining Association Rules
 
 ..................................................
-Support: $ X => Y = P(X uu Y) $, or the percentage of transactions in the
-database that contain both $X$ and $Y$
+$ T = {t_1, t_2, ... t_n} $ is a set of transactions
 
-Confidence: $ (X => Y) = (P(X uu Y))/(P(X))$ , or the percentage of transactions
+where each $t_i$ is an itemset like we saw earlier:
+
+$ t_1 = A = {text{milk}, text{juice}, text{bread}, text{jam}, text{eggs}} $
+$ t_2 = B = {text{butter}, text{bacon}, text{sausage}, text{ham}, text{eggs}, text{bread}} $
+$ t_3 = C = {} $ 
+$ t_4 = D = {text{ham}, text{steak}, text{chicken}, text{fish}} $
+$ t_5 = E = {text{milk}, text{milk}, text{bread}, text{eggs}} $
+$ t_6 = F = {text{butter}, text{bacon}} $
+$ t_7 = G = {text{milk}, text{juice}, text{bread}, text{jam}, text{eggs}} $
+
+$ |T| = 7 $ for this example.
+..................................................
+
+== Association Rule
+
+..................................................
+$ X => Y $, i.e., observation of itemset $X$ implies probable 
+presence of itemset $Y$
+..................................................
+
+
+== Support
+
+..................................................
+$ text{supp}(X => Y) = (sum_(i=1)^n delta(({X uu Y} sube t_i)))/|T| $, i.e.,  the proportion 
+of transactions that contain both $X$ and $Y$
+..................................................
+
+== Confidence
+
+..................................................
+$ text{conf}(X => Y) = (text{supp}(X uu Y))/(text{supp}(X))$ , or the percentage of transactions
 containing $Y$ in transactions that contain $X$
+..................................................
 
-Interest: $(X => Y) = (P(X, Y))/(P(X)P(Y))$ represents a test of
+== Lift
+
+..................................................
+$ text{lift}(X => Y) = (text{supp}(X uu Y))/(text{supp}(X)xxtext{supp}(Y))$, or the 
+ratio of observed support to that expected if $X$ and $Y$ were independent.
+..................................................
+
+== Interest
+
+..................................................
+$(X => Y) = (P(X, Y))/(P(X)P(Y))$ represents a test of
 statistical independence
 ..................................................
 
