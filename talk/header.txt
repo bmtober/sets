@@ -1,4 +1,4 @@
-= Sets and Vectors
+= Command Line Data Mining: Set Theory and Association Rules
 :author:    Berend Tober <btober@computer.org>
 :copyright: 2016, Berend Tober
 :backend:   slidy
@@ -6,4 +6,5 @@
 :data-uri:
 :icons:
 :asciimath:
+:toc:
 
