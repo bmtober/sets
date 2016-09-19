@@ -53,10 +53,11 @@ denominator=0
 for n in $(find "${directory}" -type f)
 do
   denominator=$((denominator + 1))
-  result=$(includes "${infile1}" "${n}")
-  [ $? -eq 0 ] && numerator=$((numerator + 1))
-  [ -n "${listmatches}" ] && echo "${n}"
+  includes "${infile1}" "${n}"
+  result=$?
+  [ ${result} -eq 0 ] && numerator=$((numerator + 1))
+  [ -n "${listmatches}" ] && [ ${result} -eq 0 ] && echo "${n}"
 done
 
-[ ! -n "${listmatches}" ] && dc <<< "10k$numerator $denominator /p"
+[ -z "${listmatches}" ] && dc <<< "10k$numerator $denominator /p"
 

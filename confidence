@@ -3,26 +3,24 @@ me=$(basename $0)
 usage="
 
 NAME
-  ${me} - Confidence of an association rule.
+  ${me} - Confidence in an association rule.
 
 SYNOPSIS
   ${me} [OPTIONS] anticedent consequent directory
 
 DESCRIPTION
-  ${me} returns the confidence of a rule over a data set in directory. 
+  ${me} returns the confidence of an associate between the antiecedent
+        and the consequent over a directory of set files.
 
 OPTIONS
   -h  Displays help message.
 
 AUTHOR
-  Implementation by Berend M. Tober based on article by Peteris Krumins at 
-
-  http://www.catonmat.net/blog/set-operations-in-unix-shell/
-
+  Implementation by Berend M. Tober.
 
 "
 
-infile1="-"
+anticedent="-"
 directory="./"
 
 while [[ $# -gt 0 ]]
@@ -37,22 +35,22 @@ do
       exit
       ;;
     *)
-      infile1="${1--}"
-      directory="${2-./}"
-      shift 2
+      anticedent="${1--}"
+      consequent="${2--}"
+      directory="${3-./}"
+      shift 3
       ;;
   esac
   shift
 done  
 
-numerator=$(support <(suppo 
-denominator=0
-for n in $(find "${directory}" -type f)
-do
-  denominator=$((denominator + 1))
-  result=$(includes "${infile1}" "${n}")
-  [ $? -eq 0 ] && numerator=$((numerator + 1))
-done
+tmpfile=".$0.$$"
+trap 'rm "${tmpfile}"' EXIT
+cat "${anticedent}" "${consequent}" > "${tmpfile}"
 
+numerator=$(./support "${tmpfile}" "${directory}")
+denominator=$(./support "${anticedent}" "${directory}")
+
+echo "$numerator $denominator"
 dc <<< "10k$numerator $denominator /p"
 
