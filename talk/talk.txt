@@ -238,9 +238,9 @@ $ t_1 = A = {text{milk}, text{juice}, text{bread}, text{jam}, text{eggs}} $
 $ t_2 = B = {text{butter}, text{bacon}, text{sausage}, text{ham}, text{eggs}, text{bread}} $
 $ t_3 = C = {} $ 
 $ t_4 = D = {text{ham}, text{steak}, text{chicken}, text{fish}} $
-$ t_5 = E = {text{milk}, text{milk}, text{bread}, text{eggs}} $
+$ t_5 = E = {text{milk}, text{bread}, text{eggs}} $
 $ t_6 = F = {text{butter}, text{bacon}} $
-$ t_7 = G = {text{milk}, text{juice}, text{bread}, text{jam}, text{eggs}} $
+$ t_7 = G = {text{milk}, text{bacon}, text{bread}, text{jam}, text{eggs}} $
 
 $ |T| = 7 $ for this example.
 ..................................................
@@ -250,6 +250,11 @@ $ |T| = 7 $ for this example.
 ..................................................
 $ X => Y $, i.e., observation of itemset $X$ implies probable 
 presence of itemset $Y$
+
+
+$ {text{milk}, text{bread}} => {text{eggs}} $
+
+$ {text{milk}, text{eggs}} => {text{jam}} $
 ..................................................
 
 
@@ -258,13 +263,25 @@ presence of itemset $Y$
 ..................................................
 $ text{supp}(X => Y) = (sum_(i=1)^n delta(({X uu Y} sube t_i)))/|T| $, i.e.,  the proportion 
 of transactions that contain both $X$ and $Y$
+
+$ X = {text{milk}, text{eggs}} $
+$ Y = {text{jam}} $
+
+$ text{supp}(X => Y) = 2/7 $
+
 ..................................................
 
 == Confidence
 
 ..................................................
-$ text{conf}(X => Y) = (text{supp}(X uu Y))/(text{supp}(X))$ , or the percentage of transactions
-containing $Y$ in transactions that contain $X$
+$ text{conf}(X => Y) = (text{supp}(X uu Y))/(text{supp}(X))$ , i.e., the proportion 
+of transactions containing $Y$ amongst the transactions that contain $X$
+
+$ X = {text{milk}, text{eggs}} $
+$ Y = {text{jam}} $
+
+$ text{conf}(X => Y) = (2//7)/(3//7) = 2/3 $
+
 ..................................................
 
 == Lift
@@ -272,13 +289,27 @@ containing $Y$ in transactions that contain $X$
 ..................................................
 $ text{lift}(X => Y) = (text{supp}(X uu Y))/(text{supp}(X)xxtext{supp}(Y))$, or the 
 ratio of observed support to that expected if $X$ and $Y$ were independent.
+
+
+$ X = {text{milk}, text{eggs}} $
+$ Y = {text{jam}} $
+
+$ text{lift}(X => Y) = (2/7)/((3/7)*(2/7)) = 7/3 $
+
 ..................................................
 
-== Interest
+== Conviction
 
 ..................................................
-$(X => Y) = (P(X, Y))/(P(X)P(Y))$ represents a test of
-statistical independence
+$ text{conv}(X => Y) = (1 - text{supp}(Y))/(1 - text{conf}(X => Y))$ , i.e., the 
+ratio of the expected frequency that $X$ occurs without $Y$ if $X$ and $Y$ were independent
+to the observed frequency of incorrect predictions.
+
+$ X = {text{milk}, text{eggs}} $
+$ Y = {text{jam}} $
+
+$ text{conv}(X => Y) = (1 - 2/7)/(1 - 2/3) = (5//7)/(1//3) = 15/7 $
+
 ..................................................
 
 
