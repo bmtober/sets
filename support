@@ -6,7 +6,7 @@ NAME
   ${me} - Support of an item set.
 
 SYNOPSIS
-  ${me} [OPTIONS] setA directory
+  ${me} [OPTIONS] itemset directory
 
 DESCRIPTION
   ${me} returns the support of set A amongst transactions in directory. 
@@ -14,16 +14,16 @@ DESCRIPTION
 OPTIONS
   -h  Displays help message.
 
+  -l  List the set files that match the item set.
+
 AUTHOR
-  Implementation by Berend M. Tober based on article by Peteris Krumins at 
-
-  http://www.catonmat.net/blog/set-operations-in-unix-shell/
-
+  Implementation by Berend M. Tober.
 
 "
 
 infile1="-"
 directory="./"
+unset listmatches
 
 while [[ $# -gt 0 ]]
 do
@@ -31,6 +31,9 @@ do
     -h)
       echo "${usage}"
       exit
+      ;;
+    -l)
+      listmatches="true"
       ;;
     -*)
       echo "Invalid option '${1}'"
@@ -52,7 +55,8 @@ do
   denominator=$((denominator + 1))
   result=$(includes "${infile1}" "${n}")
   [ $? -eq 0 ] && numerator=$((numerator + 1))
+  [ -n "${listmatches}" ] && echo "${n}"
 done
 
-dc <<< "10k$numerator $denominator /p"
+[ ! -n "${listmatches}" ] && dc <<< "10k$numerator $denominator /p"
 
