@@ -1,6 +1,12 @@
-SOURCES="cardinality complement contains difference disjoint empty equal includes intersection members power product union"
+SOURCES="cardinality complement contains difference disjoint empty equal includes intersection members power product union support confidence lift"
 
-all:
+all: $(SOURCES)
+	for f in $^; \
+	do \
+		ln $$f $(HOME)/.local/bin/$$f; \
+	done
+
 
 clean:
-#	rm /home/btober/.local/bin/$n;ln $n /home/btober/.local/bin/$n
+	pushd $(HOME)/.local/bin/
+	rm $(SOURCES)
