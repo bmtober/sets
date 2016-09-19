@@ -219,26 +219,26 @@ text{{}}
 
 === Mining Association Rules
 
-[horizontal]
-Support:: (X => Y) => P(X,Y), or the percentage of transactions in the
-database that contain both X and Y
+..................................................
+Support: $ (X => Y) = P(X uu Y) $, or the percentage of transactions in the
+database that contain both $X$ and $Y$
 
-Confidence:: (X => Y) => P(X,Y)/P(X), or the percentage of transactions
-containing Y in transactions those contain X
+Confidence: $ (X => Y) = P(X uu Y)/P(X)$ , or the percentage of transactions
+containing $Y$ in transactions that contain $X$
 
-Interest:: (X => Y) => P(X , Y )/P(X )P(Y) represents a test of
+Interest: $(X => Y) = P(X, Y)//(P(X)P(Y))$ represents a test of
 statistical independence
+..................................................
 
 
 === Precision and Recall
 
-Precision Pr =  TP/(TP + FP)
+..................................................
+Precision $text{Pr} =  TP//(TP + FP)$
 
-Recall Re =  TP/(TP + FN)
+Recall $text{Re} = TP//(TP + FN)$
+..................................................
     
-
-..................................................
-..................................................
 
 
 == Review of Vectors
