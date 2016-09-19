@@ -60,9 +60,9 @@ $ {text{butter}, text{bacon}} sube
 
 .Note
 
-$ |X| le |Y| $
-
 $ X sube X $
+
+$ |X| le |Y| $
 
 
 == Set Equality
@@ -88,6 +88,7 @@ $ B = {text{butter}, text{bacon}, text{sausage}, text{ham}, text{eggs}, text{bre
 $ F = {text{butter}, text{bacon}} $
 
 $ F sub B $ since all members of $F$ are members of $B$ but $F != B$.
+
 ..................................................
 
 == Union
@@ -172,7 +173,9 @@ $ D xx F =
 text{(chicken, bacon)}, 
 text{(chicken, butter)},
 text{(fish, bacon)},
-text{(fish, butter)},
+text{(fish, butter)}, $
+$
+text{        }
 text{(ham, bacon)},
 text{(ham, butter)},
 text{(steak, bacon)},
@@ -194,11 +197,15 @@ text{{steak}},
 text{{chicken	ham}},
 text{{chicken	steak	ham}},
 text{{chicken	steak}},
-text{{chicken}},
+text{{chicken}}, $
+$
+text{      }
 text{{fish	ham}},
 text{{fish	steak	ham}},
 text{{fish	steak}},
-text{{fish	chicken	ham}},
+text{{fish	chicken	ham}}, $
+$
+text{      }
 text{{fish	chicken	steak	ham}},
 text{{fish	chicken	steak}},
 text{{fish	chicken}},
@@ -220,13 +227,13 @@ text{{}}
 === Mining Association Rules
 
 ..................................................
-Support: $ (X => Y) = P(X uu Y) $, or the percentage of transactions in the
+Support: $ X => Y = P(X uu Y) $, or the percentage of transactions in the
 database that contain both $X$ and $Y$
 
-Confidence: $ (X => Y) = P(X uu Y)/P(X)$ , or the percentage of transactions
+Confidence: $ (X => Y) = (P(X uu Y))/(P(X))$ , or the percentage of transactions
 containing $Y$ in transactions that contain $X$
 
-Interest: $(X => Y) = P(X, Y)//(P(X)P(Y))$ represents a test of
+Interest: $(X => Y) = (P(X, Y))/(P(X)P(Y))$ represents a test of
 statistical independence
 ..................................................
 
@@ -234,9 +241,9 @@ statistical independence
 === Precision and Recall
 
 ..................................................
-Precision $text{Pr} =  TP//(TP + FP)$
+Precision $text{Pr} =  (TP)/(TP + FP)$
 
-Recall $text{Re} = TP//(TP + FN)$
+Recall $text{Re} = (TP)/(TP + FN)$
 ..................................................
     
 
