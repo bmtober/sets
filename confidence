@@ -1,0 +1,58 @@
+me=$(basename $0)
+
+usage="
+
+NAME
+  ${me} - Confidence of an association rule.
+
+SYNOPSIS
+  ${me} [OPTIONS] anticedent consequent directory
+
+DESCRIPTION
+  ${me} returns the confidence of a rule over a data set in directory. 
+
+OPTIONS
+  -h  Displays help message.
+
+AUTHOR
+  Implementation by Berend M. Tober based on article by Peteris Krumins at 
+
+  http://www.catonmat.net/blog/set-operations-in-unix-shell/
+
+
+"
+
+infile1="-"
+directory="./"
+
+while [[ $# -gt 0 ]]
+do
+  case "${1}" in
+    -h)
+      echo "${usage}"
+      exit
+      ;;
+    -*)
+      echo "Invalid option '${1}'"
+      exit
+      ;;
+    *)
+      infile1="${1--}"
+      directory="${2-./}"
+      shift 2
+      ;;
+  esac
+  shift
+done  
+
+numerator=$(support <(suppo 
+denominator=0
+for n in $(find "${directory}" -type f)
+do
+  denominator=$((denominator + 1))
+  result=$(includes "${infile1}" "${n}")
+  [ $? -eq 0 ] && numerator=$((numerator + 1))
+done
+
+dc <<< "10k$numerator $denominator /p"
+
