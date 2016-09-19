@@ -3,13 +3,13 @@ me=$(basename $0)
 usage="
 
 NAME
-  ${me} - Confidence in an association rule.
+  ${me} - Lift of an association rule.
 
 SYNOPSIS
   ${me} [OPTIONS] antecedent consequent directory
 
 DESCRIPTION
-  ${me} returns the confidence of an association between the antiecedent
+  ${me} returns the lift an association between the antiecedent
         and the consequent over a directory of set files.
 
 OPTIONS
@@ -32,7 +32,6 @@ checkscript ()
 checkscript "support"
 checkscript "union"
 checkscript "dc"
-
 
 directory="./"
 
@@ -65,7 +64,8 @@ trap 'rm "${tmpfile}"' EXIT
 union "${antecedent}" "${consequent}" > "${tmpfile}"
 
 numerator=$(support "${tmpfile}" "${directory}")
-denominator=$(support "${antecedent}" "${directory}")
+denominatorX=$(support "${antecedent}" "${directory}")
+denominatorY=$(support "${consequent}" "${directory}")
 
-dc <<< "10k$numerator $denominator /p"
+dc <<< "10k$numerator $denominatorX $denominatorY */p"
 

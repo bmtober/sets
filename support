@@ -9,7 +9,7 @@ SYNOPSIS
   ${me} [OPTIONS] itemset directory
 
 DESCRIPTION
-  ${me} returns the support of set A amongst transactions in directory. 
+  ${me} returns the support of an itemset amongst transactions in directory. 
 
 OPTIONS
   -h  Displays help message.
@@ -19,9 +19,22 @@ OPTIONS
 AUTHOR
   Implementation by Berend M. Tober.
 
+  Based on https://en.wikipedia.org/wiki/Association_rule_learning
+
 "
 
-infile1="-"
+
+checkscript ()
+{
+  # confirm that a script file is visible in path
+  which "$1" &> /dev/null
+  [ $? -ne 0 ]  && echo "$1 not found in path" && exit
+}
+
+checkscript "includes"
+checkscript "dc"
+
+itemset="-"
 directory="./"
 unset listmatches
 
@@ -40,7 +53,7 @@ do
       exit
       ;;
     *)
-      infile1="${1--}"
+      itemset="${1--}"
       directory="${2-./}"
       shift 2
       ;;
@@ -48,12 +61,14 @@ do
   shift
 done  
 
+[ ! -f  "${itemset}" ] && echo "Itemset '${itemset}' not found." && exit
+
 numerator=0
 denominator=0
 for n in $(find "${directory}" -type f)
 do
   denominator=$((denominator + 1))
-  includes "${infile1}" "${n}"
+  includes "${itemset}" "${n}"
   result=$?
   [ ${result} -eq 0 ] && numerator=$((numerator + 1))
   [ -n "${listmatches}" ] && [ ${result} -eq 0 ] && echo "${n}"
