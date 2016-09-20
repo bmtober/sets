@@ -4,8 +4,6 @@ PREFIX?=/usr/local/bin
 all:
 
 install:
-	echo "$(SOURCES)"
-	echo "$(PREFIX)"
 	echo $(SOURCES) | tr ' ' '\n' | xargs -I '{}' cp {} $(PREFIX)/{}
 
 uninstall:
