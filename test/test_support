@@ -1,0 +1,37 @@
+. assertion
+
+PATH="../:$PATH"
+
+echo "$(basename $0)"
+
+[[ -d results ]] || mkdir results
+
+tmpfile1=".$(basename $0).$$.1"
+tmpfile2=".$(basename $0).$$.2"
+tmpfile3=".$(basename $0).$$.3"
+trap 'rm "${tmpfile1}" "${tmpfile2}" "${tmpfile3}"' EXIT
+
+echo -e "milk\neggs" > "${tmpfile1}"
+echo -e "juice" > "${tmpfile2}"
+../union "${tmpfile1}" "${tmpfile2}" > "${tmpfile3}"
+
+../support -l "${tmpfile1}" data/ > results/support.1
+../support -l "${tmpfile2}" data/ > results/support.2
+../support -l "${tmpfile3}" data/ > results/support.3
+
+../support "${tmpfile1}" data/ > results/support.4
+../support "${tmpfile2}" data/ > results/support.5
+../support "${tmpfile3}" data/ > results/support.6
+
+echo
+assert 'diff expected/support.1 results/support.1 &> /dev/null'
+assert 'diff expected/support.2 results/support.2 &> /dev/null'
+assert 'diff expected/support.3 results/support.3 &> /dev/null'
+assert 'diff expected/support.4 results/support.4 &> /dev/null'
+assert 'diff expected/support.5 results/support.5 &> /dev/null'
+assert 'diff expected/support.6 results/support.6 &> /dev/null'
+
+echo
+echo "PASS: ${success_count}"
+echo "FAIL: ${failure_count}"
+

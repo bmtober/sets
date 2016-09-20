@@ -1,0 +1,27 @@
+. assertion
+
+PATH="../:$PATH"
+
+echo "$(basename $0)"
+
+[[ -d results ]] || mkdir results
+
+tmpfile1=".$(basename $0).$$.1"
+tmpfile2=".$(basename $0).$$.2"
+tmpfile3=".$(basename $0).$$.3"
+trap 'rm "${tmpfile1}" "${tmpfile2}" "${tmpfile3}"' EXIT
+
+echo -e "milk\neggs" > "${tmpfile1}"
+echo -e "juice" > "${tmpfile2}"
+../union "${tmpfile1}" "${tmpfile2}" > "${tmpfile3}"
+
+../confidence "${tmpfile1}" "${tmpfile2}" data/ > results/confidence.1
+
+
+echo
+assert 'diff expected/confidence.1 results/confidence.1 &> /dev/null'
+
+echo
+echo "PASS: ${success_count}"
+echo "FAIL: ${failure_count}"
+
