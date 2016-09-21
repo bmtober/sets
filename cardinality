@@ -46,5 +46,11 @@ do
   shift
 done  
 
-cat "${infile}" | members | wc -l 
+if [ -f "${infile}" ]
+then
+  cat "${infile}" | members | wc -l 
+elif [ -d "${infile}" ]
+then
+  ls "${infile}" | wc -l
+fi
 
