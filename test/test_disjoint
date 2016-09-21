@@ -1,16 +1,16 @@
 . assertion
 
-PATH="../:$PATH"
+PATH=":$PATH"
 
 echo "Testing disjoint"
 
 [[ -d results ]] || mkdir results
 
-../disjoint data/A data/B; echo $? > results/disjoint.1
-../disjoint data/B data/B; echo $? > results/disjoint.2
-../disjoint data/C data/B; echo $? > results/disjoint.3
-../disjoint data/C data/C; echo $? > results/disjoint.4
-../disjoint data/A data/D; echo $? > results/disjoint.5
+disjoint data/A data/B; echo $? > results/disjoint.1
+disjoint data/B data/B; echo $? > results/disjoint.2
+disjoint data/C data/B; echo $? > results/disjoint.3
+disjoint data/C data/C; echo $? > results/disjoint.4
+disjoint data/A data/D; echo $? > results/disjoint.5
 
 echo
 assert 'diff expected/disjoint.1 results/disjoint.1 &> /dev/null'

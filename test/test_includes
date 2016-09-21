@@ -1,18 +1,18 @@
 . assertion
 
-PATH="../:$PATH"
+PATH=":$PATH"
 
 echo "Testing includes"
 
 [[ -d results ]] || mkdir results
 
-../includes data/A data/B; echo $? > results/includes.1
-../includes data/B data/B; echo $? > results/includes.2
-../includes data/C data/B; echo $? > results/includes.3
-../includes data/C data/C; echo $? > results/includes.4
-../includes data/A data/D; echo $? > results/includes.5
-../includes data/A data/E; echo $? > results/includes.6
-../includes data/E data/A; echo $? > results/includes.7
+includes data/A data/B; echo $? > results/includes.1
+includes data/B data/B; echo $? > results/includes.2
+includes data/C data/B; echo $? > results/includes.3
+includes data/C data/C; echo $? > results/includes.4
+includes data/A data/D; echo $? > results/includes.5
+includes data/A data/E; echo $? > results/includes.6
+includes data/E data/A; echo $? > results/includes.7
 
 echo
 assert 'diff expected/includes.1 results/includes.1 &> /dev/null'

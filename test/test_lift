@@ -1,6 +1,6 @@
 . assertion
 
-PATH="../:$PATH"
+PATH=":$PATH"
 
 echo "$(basename $0)"
 
@@ -13,9 +13,9 @@ trap 'rm "${tmpfile1}" "${tmpfile2}" "${tmpfile3}"' EXIT
 
 echo -e "milk\neggs" > "${tmpfile1}"
 echo -e "juice" > "${tmpfile2}"
-../union "${tmpfile1}" "${tmpfile2}" > "${tmpfile3}"
+union "${tmpfile1}" "${tmpfile2}" > "${tmpfile3}"
 
-../lift "${tmpfile1}" "${tmpfile2}" data/ > results/lift.1
+lift "${tmpfile1}" "${tmpfile2}" data/ > results/lift.1
 
 
 echo

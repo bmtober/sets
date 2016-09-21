@@ -1,6 +1,6 @@
 . assertion
 
-PATH="../:$PATH"
+PATH=":$PATH"
 
 echo "$(basename $0)"
 
@@ -11,17 +11,17 @@ tmpfile2=".$(basename $0).$$.2"
 tmpfile3=".$(basename $0).$$.3"
 trap 'rm "${tmpfile1}" "${tmpfile2}" "${tmpfile3}"' EXIT
 
-echo -e "milk\neggs" > "${tmpfile1}"
-echo -e "juice" > "${tmpfile2}"
-../union "${tmpfile1}" "${tmpfile2}" > "${tmpfile3}"
+echo -e "milk\nbread" > "${tmpfile1}"
+echo -e "jam" > "${tmpfile2}"
+union "${tmpfile1}" "${tmpfile2}" > "${tmpfile3}"
 
-../support -l "${tmpfile1}" data/ > results/support.1
-../support -l "${tmpfile2}" data/ > results/support.2
-../support -l "${tmpfile3}" data/ > results/support.3
+support -l "${tmpfile1}" data/ > results/support.1
+support -l "${tmpfile2}" data/ > results/support.2
+support -l "${tmpfile3}" data/ > results/support.3
 
-../support "${tmpfile1}" data/ > results/support.4
-../support "${tmpfile2}" data/ > results/support.5
-../support "${tmpfile3}" data/ > results/support.6
+support "${tmpfile1}" data/ > results/support.4
+support "${tmpfile2}" data/ > results/support.5
+support "${tmpfile3}" data/ > results/support.6
 
 echo
 assert 'diff expected/support.1 results/support.1 &> /dev/null'

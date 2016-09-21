@@ -6,12 +6,12 @@ echo "Testing complement"
 
 [[ -d results ]] || mkdir results
 
-../complement data/A data/B > results/complement.1
-../complement data/B data/B > results/complement.2
-../complement data/C data/B > results/complement.3
-../complement data/C data/C > results/complement.4
-../complement data/B data/A > results/complement.5
-../complement data/A data/D > results/complement.6
+complement data/A data/B > results/complement.1
+complement data/B data/B > results/complement.2
+complement data/C data/B > results/complement.3
+complement data/C data/C > results/complement.4
+complement data/B data/A > results/complement.5
+complement data/A data/D > results/complement.6
 
 echo
 assert 'diff expected/complement.1 results/complement.1 &> /dev/null'

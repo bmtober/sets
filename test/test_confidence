@@ -11,11 +11,11 @@ tmpfile2=".$(basename $0).$$.2"
 tmpfile3=".$(basename $0).$$.3"
 trap 'rm "${tmpfile1}" "${tmpfile2}" "${tmpfile3}"' EXIT
 
-echo -e "milk\neggs" > "${tmpfile1}"
-echo -e "juice" > "${tmpfile2}"
-../union "${tmpfile1}" "${tmpfile2}" > "${tmpfile3}"
+echo -e "milk\nbread" > "${tmpfile1}"
+echo -e "jam" > "${tmpfile2}"
+union "${tmpfile1}" "${tmpfile2}" > "${tmpfile3}"
 
-../confidence "${tmpfile1}" "${tmpfile2}" data/ > results/confidence.1
+confidence "${tmpfile1}" "${tmpfile2}" data/ > results/confidence.1
 
 
 echo

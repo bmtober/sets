@@ -6,9 +6,9 @@ echo "Testing cardinality"
 
 [[ -d results ]] || mkdir results
 
-../cardinality data/A > results/cardinality.1
-../cardinality data/B > results/cardinality.2
-../cardinality data/C > results/cardinality.3
+cardinality data/A > results/cardinality.1
+cardinality data/B > results/cardinality.2
+cardinality data/C > results/cardinality.3
 
 echo
 assert 'diff expected/cardinality.1 results/cardinality.1 &> /dev/null'

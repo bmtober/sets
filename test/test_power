@@ -1,14 +1,14 @@
 . assertion
 
-PATH="../:$PATH"
+PATH=":$PATH"
 
 echo "Testing power"
 
 [[ -d results ]] || mkdir results
 
-../power data/A > results/power.1
-../power data/B > results/power.2
-../power data/C > results/power.3
+power data/A > results/power.1
+power data/B > results/power.2
+power data/C > results/power.3
 printf "%s\n%s\n%s\n" "a" "b" "c" | power > results/power.4
 
 echo

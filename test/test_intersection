@@ -1,16 +1,16 @@
 . assertion
 
-PATH="../:$PATH"
+PATH=":$PATH"
 
 echo "Testing intersection"
 
 [[ -d results ]] || mkdir results
 
-../intersection data/A data/B > results/intersection.1
-../intersection data/B data/B > results/intersection.2
-../intersection data/C data/B > results/intersection.3
-../intersection data/C data/C > results/intersection.4
-../intersection data/B data/A > results/intersection.5
+intersection data/A data/B > results/intersection.1
+intersection data/B data/B > results/intersection.2
+intersection data/C data/B > results/intersection.3
+intersection data/C data/C > results/intersection.4
+intersection data/B data/A > results/intersection.5
 
 echo
 assert 'diff expected/intersection.1 results/intersection.1 &> /dev/null'

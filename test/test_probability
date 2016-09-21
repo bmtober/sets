@@ -42,7 +42,6 @@ echo "Testing probability"
 
 . assertion
 
-PATH="../:$PATH"
 
 # Initialize precision
 echo "4k" > results/probability.1
