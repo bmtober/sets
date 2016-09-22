@@ -8,3 +8,23 @@
 :asciimath:
 :toc:
 
+== Get the Code!
+
+.......................................
+git clone https://github.com/bmtober/sets
+cd sets
+.......................................
+
+followed by either (this installs to /usr/local/bin)
+
+.......................................
+sudo make install
+.......................................
+
+or (this installs to specified location)
+
+.......................................
+PREFIX=~/.local/bin  make install
+.......................................
+
+
