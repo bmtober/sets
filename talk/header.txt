@@ -1,4 +1,4 @@
-= Command Line Data Mining: Set Theory and Association Rules
+= Command Line Data Science: Set Theory and Association Rules
 :author:    Berend Tober <btober@computer.org>
 :copyright: 2016, Berend Tober
 :backend:   slidy
@@ -8,23 +8,11 @@
 :asciimath:
 :toc:
 
-== Get the Code!
+References
 
-.......................................
-git clone https://github.com/bmtober/sets
-cd sets
-.......................................
-
-followed by either (this installs to /usr/local/bin)
-
-.......................................
-sudo make install
-.......................................
-
-or (this installs to specified location)
-
-.......................................
-PREFIX=~/.local/bin  make install
-.......................................
+ http://www.catonmat.net/blog/set-operations-in-unix-shell/
+ http://en.wikipedia.org/wiki/Set_theory
+ http://en.wikipedia.org/wiki/Association_rule_learning
+ http://en.wikipedia.org/wiki/Precision_and_recall
 
 

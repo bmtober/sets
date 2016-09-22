@@ -1,3 +1,34 @@
+== Get the Code!
+
+---------------------------------------
+git clone https://github.com/bmtober/sets
+---------------------------------------
+
+========================================
+  sets
+  |-- market
+  |-- talk
+  \`-- test
+      |-- data
+      \`-- expected
+========================================
+
+
+== Install the Scripts
+
+Install to /usr/local/bin
+---------------------------------------
+cd sets
+sudo make install
+---------------------------------------
+
+Install to specified location
+--------------------------------------
+cd sets
+PREFIX=~/.local/bin  make install
+---------------------------------------
+
+
 == Review of Set Theory
 
 
@@ -323,4 +354,3 @@ Precision $text{Pr} =  (TP)/(TP + FP)$
 Recall $text{Re} = (TP)/(TP + FN)$
 ..................................................
     
-
