@@ -300,6 +300,8 @@ of transactions that contain both $X$ and $Y$
 $ X = {text{milk}, text{bread}} $
 $ Y = {text{jam}} $
 
+$ X uu Y sube A, G $
+
 $ text{supp}(X => Y) = 2/7 $
 
 ..................................................
@@ -313,6 +315,9 @@ of transactions containing $Y$ amongst the transactions that contain $X$
 $ X = {text{milk}, text{bread}} $
 $ Y = {text{jam}} $
 
+$ X sube A, E, G $
+$ X uu Y sube A, G $
+
 $ text{conf}(X => Y) = (2//7)/(3//7) = 2/3 $
 
 ..................................................
@@ -323,9 +328,12 @@ $ text{conf}(X => Y) = (2//7)/(3//7) = 2/3 $
 $ text{lift}(X => Y) = (text{supp}(X uu Y))/(text{supp}(X)xxtext{supp}(Y))$, or the 
 ratio of observed support to that expected if $X$ and $Y$ were independent.
 
-
 $ X = {text{milk}, text{bread}} $
 $ Y = {text{jam}} $
+
+$ X sube A, E, G $
+$ Y sube A, G $
+$ X uu Y sube A, G $
 
 $ text{lift}(X => Y) = (2/7)/((3/7)*(2/7)) = 7/3 $
 
@@ -340,6 +348,11 @@ to the observed frequency of incorrect predictions.
 
 $ X = {text{milk}, text{bread}} $
 $ Y = {text{jam}} $
+
+$ Y sube A, G $
+$ X sube A, E, G $
+$ X uu Y sube A, G $
+
 
 $ text{conv}(X => Y) = (1 - 2/7)/(1 - 2/3) = (5//7)/(1//3) = 15/7 $
 
