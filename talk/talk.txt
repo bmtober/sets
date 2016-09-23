@@ -4,17 +4,16 @@
 git clone https://github.com/bmtober/sets
 ---------------------------------------
 
-========================================
+=======================================
   sets
   |-- market
   |-- talk
   \`-- test
       |-- data
       \`-- expected
-========================================
+=======================================
 
 
-== Install the Scripts
 
 Install to /usr/local/bin
 ---------------------------------------
@@ -262,7 +261,10 @@ text{{}}
 == Association Rules
 
 ..................................................
-$ I = {i_1, i_2, ... i_m} $ is a set of items
+$ I = {i_1, i_2, ... i_m} $ is the set of all items
+$ = {text{bacon}, text{bread}, text{butter}, text{chicken}, text{eggs}, text{fish}, 
+  text{ham}, text{jam}, text{juice}, text{milk}, text{sausage}, text{steak}}$
+
 $ T = {t_1, t_2, ... t_n} $ is a set of transactions where each $t_i$
 is a subset of $I$ ... an itemset like we saw earlier:
 
@@ -366,4 +368,4 @@ Precision $text{Pr} =  (TP)/(TP + FP)$
 
 Recall $text{Re} = (TP)/(TP + FN)$
 ..................................................
-    
+
