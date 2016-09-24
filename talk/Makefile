@@ -11,7 +11,7 @@ docs: $(TARGETS)
 $(OBJECTS): $(SOURCES)
 	cat $+ > $@
 
-%.html: %.adoc Makefile
+%.html: %.adoc Makefile pic/*.png
 	asciidoc $<
 
 %.png: %.dot
