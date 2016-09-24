@@ -1,0 +1,71 @@
+me=$(basename $0)
+
+usage="
+
+NAME
+  ${me} - Lift of an association rule.
+
+SYNOPSIS
+  ${me} [OPTIONS] antecedent consequent directory
+
+DESCRIPTION
+  ${me} returns the lift an association between the antiecedent
+        and the consequent over a directory of set files.
+
+OPTIONS
+  -h  Displays help message.
+
+AUTHOR
+  Implementation by Berend M. Tober.
+
+  Based on https://en.wikipedia.org/wiki/Association_rule_learning
+
+"
+
+checkscript ()
+{
+  # confirm that a script file is visible in path
+  which "$1" &> /dev/null
+  [ $? -ne 0 ]  && echo "$1 not found in path" && exit
+}
+
+checkscript "support"
+checkscript "union"
+checkscript "dc"
+
+directory="./"
+
+while [[ $# -gt 0 ]]
+do
+  case "${1}" in
+    -h)
+      echo "${usage}"
+      exit
+      ;;
+    -*)
+      echo "Invalid option '${1}'"
+      exit
+      ;;
+    *)
+      antecedent="${1}"
+      consequent="${2}"
+      directory="${3-./}"
+      shift 3
+      ;;
+  esac
+  shift
+done  
+
+[ ! -f  "${antecedent}" ] && echo "Antecedent '${antecedent}' not found." && exit
+[ ! -f  "${consequent}" ] && echo "Consequent '${consequent}' not found." && exit
+
+tmpfile=".$(basename $0).$$"
+trap 'rm "${tmpfile}"' EXIT
+union "${antecedent}" "${consequent}" > "${tmpfile}"
+
+numerator=$(support "${tmpfile}" "${directory}")
+denominatorX=$(support "${antecedent}" "${directory}")
+denominatorY=$(support "${consequent}" "${directory}")
+
+dc <<< "10k$numerator $denominatorX $denominatorY */p"
+

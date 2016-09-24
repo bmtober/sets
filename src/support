@@ -1,0 +1,78 @@
+me=$(basename $0)
+
+usage="
+
+NAME
+  ${me} - Support of an item set.
+
+SYNOPSIS
+  ${me} [OPTIONS] itemset directory
+
+DESCRIPTION
+  ${me} returns the support of an itemset amongst transactions in directory. 
+
+OPTIONS
+  -h  Displays help message.
+
+  -l  List the set files that match the item set.
+
+AUTHOR
+  Implementation by Berend M. Tober.
+
+  Based on https://en.wikipedia.org/wiki/Association_rule_learning
+
+"
+
+
+checkscript ()
+{
+  # confirm that a script file is visible in path
+  which "$1" &> /dev/null
+  [ $? -ne 0 ]  && echo "$1 not found in path" && exit
+}
+
+checkscript "includes"
+checkscript "dc"
+
+itemset="-"
+directory="./"
+unset listmatches
+
+while [[ $# -gt 0 ]]
+do
+  case "${1}" in
+    -h)
+      echo "${usage}"
+      exit
+      ;;
+    -l)
+      listmatches="true"
+      ;;
+    -*)
+      echo "Invalid option '${1}'"
+      exit
+      ;;
+    *)
+      itemset="${1--}"
+      directory="${2-./}"
+      shift 2
+      ;;
+  esac
+  shift
+done  
+
+[ ! -f  "${itemset}" ] && echo "Itemset '${itemset}' not found." && exit
+
+numerator=0
+denominator=0
+for n in $(find "${directory}" -type f)
+do
+  denominator=$((denominator + 1))
+  includes "${itemset}" "${n}"
+  result=$?
+  [ ${result} -eq 0 ] && numerator=$((numerator + 1))
+  [ -n "${listmatches}" ] && [ ${result} -eq 0 ] && echo "${n}"
+done
+
+[ -z "${listmatches}" ] && dc <<< "10k$numerator $denominator /p"
+

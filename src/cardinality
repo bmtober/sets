@@ -1,0 +1,56 @@
+me=$(basename $0)
+
+usage="
+
+NAME
+  ${me} - Output set cardinality
+
+SYNOPSIS
+  ${me} [OPTIONS] datafile
+  ${me} < datafile
+  cat datafile | ${me} 
+
+DESCRIPTION
+  ${me} outputs the cardinality of a set, i.e., the number of distinct
+  elements of a set.
+
+OPTIONS
+  -h  Displays help message.
+
+AUTHOR
+  Implementation by Berend M. Tober based on article by Peteris Krumins at 
+
+  http://www.catonmat.net/blog/set-operations-in-unix-shell/
+
+
+"
+
+infile="-"
+
+while [[ $# -gt 0 ]]
+do
+  case "${1}" in
+    -h)
+      echo "${usage}"
+      exit
+      ;;
+    -*)
+      echo "Invalid option '${1}'"
+      exit
+      ;;
+    *)
+      infile="${1--}"
+      shift
+      ;;
+  esac
+  shift
+done  
+
+if [ -f "${infile}" ]
+then
+  cat "${infile}" | members | wc -l 
+elif [ -d "${infile}" ]
+then
+  ls "${infile}" | wc -l
+fi
+
