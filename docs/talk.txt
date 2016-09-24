@@ -87,22 +87,17 @@ $ {text{butter}, text{bacon}} sube
  {text{butter}, text{bacon}, text{sausage}, text{ham}, text{eggs}, text{bread}} $
 ..................................................
 
-.Note
+image:pic/figure-01.png[]
 
-$ X sube X $
-
-$ |X| le |Y| $
-
-image::pic/figure-01.png[]
 
 == Set Equality
 
 ..................................................
 $ X = Y iff X sube Y and Y sube X $
-..................................................
 
 That is, $X$ and $Y$ have exactly the same membership, and
 consequently, $ |X| = |Y|$.
+..................................................
 
 == Proper Subset
 

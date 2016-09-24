@@ -6,7 +6,7 @@ TARGETS=$(SOURCES:%.pic=%.png)
 all: $(TARGETS)
 
 %.png: %.ps
-	convert  $< $@
+	convert -page 421x350 $< $@
 
 %.ps: %.pic
 	pic $< | groff -Tps -P-p4.5i,6i  > $@
