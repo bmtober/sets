@@ -17,3 +17,5 @@ $(OBJECTS): $(SOURCES)
 %.png: %.dot
 	dot -Tpng $< > $@
 
+clean:
+	rm *.adoc *.html

@@ -87,14 +87,13 @@ $ {text{butter}, text{bacon}} sube
  {text{butter}, text{bacon}, text{sausage}, text{ham}, text{eggs}, text{bread}} $
 ..................................................
 
-image::pic/figure-01.png[]
-
 .Note
 
 $ X sube X $
 
 $ |X| le |Y| $
 
+image::pic/figure-01.png[]
 
 == Set Equality
 
