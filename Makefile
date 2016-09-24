@@ -1,11 +1,16 @@
-SOURCES=cardinality complement contains difference disjoint empty equal includes intersection members power product union support confidence lift
 PREFIX?=/usr/local/bin
+.PHONY: install uninstall docs clean 
 
 all:
 
 install:
-	echo $(SOURCES) | tr ' ' '\n' | xargs -I '{}' cp {} $(PREFIX)/{}
+	$(MAKE) -C src install
 
 uninstall:
-	echo $(SOURCES) | tr ' ' '\n' | xargs -I '{}' rm $(PREFIX)/{}
+	$(MAKE) -C src uninstall
 
+docs:
+	$(MAKE) -C docs
+
+clean:
+	$(MAKE) -C docs clean
