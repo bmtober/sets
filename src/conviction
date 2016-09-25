@@ -50,8 +50,7 @@ do
     *)
       antecedent="${1}"
       consequent="${2}"
-      directory="${3-./}"
-      shift 3
+      shift
       ;;
   esac
   shift
@@ -60,12 +59,9 @@ done
 [ ! -f  "${antecedent}" ] && echo "Antecedent '${antecedent}' not found." && exit
 [ ! -f  "${consequent}" ] && echo "Consequent '${consequent}' not found." && exit
 
-tmpfile=".$(basename $0).$$"
-trap 'rm "${tmpfile}"' EXIT
-union "${antecedent}" "${consequent}" > "${tmpfile}"
 
-numerator=$(support "${tmpfile}" "${directory}")
-denominator=$(confidence "${antecedent}" "${consequent}" "${directory}")
+numerator=$(support "${antecedent}" "${consequent}")
+denominator=$(confidence "${antecedent}" "${consequent}")
 
 dc <<< "10k 1 $numerator - 1 $denominator - /p"
 
