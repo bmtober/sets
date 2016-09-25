@@ -50,7 +50,6 @@ do
     -d)
       shift
       CORPUS="${1}"
-      [ ! -d "${CORPUS}" ] && echo "${CORPUS} is not a directory or not found." && exit 1
       ;;
     -*)
       echo "Invalid option '${1}'"
@@ -67,6 +66,7 @@ done
 
 [ ! -f  "${antecedent}" ] && echo "Antecedent '${antecedent}' not found." && exit
 [ ! -f  "${consequent}" ] && echo "Consequent '${consequent}' not found." && exit
+[ ! -d "${CORPUS}" ] && echo "'${CORPUS}' is not a directory or not found." && exit 1
 
 tmpfile=".$(basename $0).$$"
 trap 'rm "${tmpfile}"' EXIT

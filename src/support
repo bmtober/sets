@@ -61,7 +61,6 @@ do
     -d)
       shift
       CORPUS="${1}"
-      [ ! -d "${CORPUS}" ] && echo "${CORPUS} is not a directory or not found." && exit 1
       ;;
     -*)
       echo "Invalid option '${1}'"
@@ -75,6 +74,7 @@ do
 done  
 
 : ${CORPUS?}
+[ ! -d "${CORPUS}" ] && echo "'${CORPUS}' is not a directory or not found." && exit 1
 
 [ ! -f  "${itemset}" ] && echo "Itemset '${itemset}' not found." && exit
 
