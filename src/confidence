@@ -69,8 +69,8 @@ done
 [ ! -f  "${consequent}" ] && echo "Consequent '${consequent}' not found." && exit
 : ${CORPUS?}
 
-numerator=$(support "${antecedent}" "${consequent}")
-denominator=$(support "${antecedent}")
+numerator=$(support -d "${CORPUS}" "${antecedent}" "${consequent}")
+denominator=$(support -d "${CORPUS}" "${antecedent}")
 
 dc <<< "10k$numerator $denominator /p"
 

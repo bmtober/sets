@@ -11,7 +11,7 @@ all: $(TARGETS)
 %.html: %.adoc
 	asciidoc $<
 
-%.adoc: $(SOURCES) Makefile 
+%.adoc: $(SOURCES)
 	$(MAKE) -C pic
 	cat $+ > $@
 

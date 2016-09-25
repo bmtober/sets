@@ -72,9 +72,9 @@ tmpfile=".$(basename $0).$$"
 trap 'rm "${tmpfile}"' EXIT
 union "${antecedent}" "${consequent}" > "${tmpfile}"
 
-numerator=$(support "${tmpfile}")
-denominatorX=$(support "${antecedent}")
-denominatorY=$(support "${consequent}")
+numerator=$(support -d "${CORPUS}" "${tmpfile}")
+denominatorX=$(support -d "${CORPUS}" "${antecedent}")
+denominatorY=$(support -d "${CORPUS}" "${consequent}")
 
 dc <<< "10k$numerator $denominatorX $denominatorY */p"
 

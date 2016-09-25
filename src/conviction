@@ -6,14 +6,19 @@ NAME
   ${me} - Conviction in an association rule.
 
 SYNOPSIS
-  ${me} [OPTIONS] antecedent consequent directory
+  ${me} [OPTIONS] antecedent consequent
 
 DESCRIPTION
   ${me} returns the conviction of an association between the antiecedent
-        and the consequent over a directory of set files.
+        and the consequent item sets.
 
 OPTIONS
   -h  Displays help message.
+
+  -d corpus
+    Specifies the directory with the data base of transaction itemsets.
+    Defaults to current directory or the CORPUS environment variable,
+    if set.
 
 AUTHOR
   Implementation by Berend M. Tober.
@@ -33,15 +38,17 @@ checkscript "support"
 checkscript "union"
 checkscript "dc"
 
-
-directory="./"
-
 while [[ $# -gt 0 ]]
 do
   case "${1}" in
     -h)
       echo "${usage}"
       exit
+      ;;
+    -d)
+      shift
+      CORPUS="${1}"
+      [ ! -d "${CORPUS}" ] && echo "${CORPUS} is not a directory or not found." && exit 1
       ;;
     -*)
       echo "Invalid option '${1}'"
@@ -60,8 +67,8 @@ done
 [ ! -f  "${consequent}" ] && echo "Consequent '${consequent}' not found." && exit
 
 
-numerator=$(support "${antecedent}" "${consequent}")
-denominator=$(confidence "${antecedent}" "${consequent}")
+numerator=$(support -d "${CORPUS}" "${antecedent}" "${consequent}")
+denominator=$(confidence -d "${CORPUS}" "${antecedent}" "${consequent}")
 
 dc <<< "10k 1 $numerator - 1 $denominator - /p"
 
