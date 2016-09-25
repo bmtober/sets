@@ -40,6 +40,8 @@ $ A = {text{milk}, text{juice}, text{bread}, text{jam}, text{eggs}} $
 $ B = {text{butter}, text{bacon}, text{sausage}, text{ham}, text{eggs}, text{bread}} $
 ..................................................
 
+image:pic/figure-01.png[]
+
 == Set Membership
 
 ..................................................
@@ -48,12 +50,11 @@ $ A = {text{milk}, text{juice}, text{bread}, text{jam}, text{eggs}} $
 
 $ B = {text{butter}, text{bacon}, text{sausage}, text{ham}, text{eggs}, text{bread}} $
 
-$ text{milk} in A  $
-
-$ text{milk} notin B $
-
+$ text{milk} in A, text{milk} notin B $
 
 ..................................................
+
+image:pic/figure-02.png[]
 
 == Empty Set
 
@@ -87,7 +88,7 @@ $ {text{butter}, text{bacon}} sube
  {text{butter}, text{bacon}, text{sausage}, text{ham}, text{eggs}, text{bread}} $
 ..................................................
 
-image:pic/figure-01.png[]
+image:pic/figure-03.png[]
 
 
 == Set Equality
@@ -98,6 +99,8 @@ $ X = Y iff X sube Y and Y sube X $
 That is, $X$ and $Y$ have exactly the same membership, and
 consequently, $ |X| = |Y|$.
 ..................................................
+
+image:pic/figure-04.png[]
 
 == Proper Subset
 
