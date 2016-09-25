@@ -14,6 +14,8 @@ DESCRIPTION
 OPTIONS
   -h  Displays help message.
 
+  -v  Increase verbosity.
+
 AUTHOR
   Implementation by Berend M. Tober based on article by Peteris Krumins at 
 
@@ -41,6 +43,9 @@ do
       echo "${usage}"
       exit
       ;;
+    -v)
+      verbose=true
+      ;;
     -*)
       echo "Invalid option '${1}'"
       exit
@@ -54,5 +59,16 @@ do
   shift
 done  
 
+[ -n "${verbose}" ] && echo "==> ${infile2} contains  ${infile1} <=="
 [ $(complement "${infile1}" "${infile2}" | wc -l) -eq 0 ] 
+result=$?
+if [ -n "${verbose}" ]
+then
+  if [ $result == 0 ] 
+  then
+    echo "true"
+  else
+    echo "false"
+  fi
+fi  
 
