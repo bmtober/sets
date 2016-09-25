@@ -12,6 +12,8 @@ all: $(TARGETS)
 %.ps: %.pic
 	pic $< | groff -Tps -P-p4.5i,6i  > $@
 
+clean-recursive: clean
+	
 clean:
 	-rm *.png *.ps
 

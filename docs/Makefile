@@ -15,6 +15,8 @@ all: $(TARGETS)
 	$(MAKE) -C pic
 	cat $+ > $@
 
+clean-recursive: clean
+	$(MAKE) -C pic clean-recursive
+	
 clean:
-	$(MAKE) -C pic clean
 	-rm *.adoc *.html

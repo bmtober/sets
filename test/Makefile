@@ -6,3 +6,9 @@ TESTS=$(SOURCES:%=test_%)
 
 check: $(TESTS)
 	for t in $^; do ./$$t;done
+	
+clean-recursive: clean
+	
+clean:
+	-rm results/*
+	-rmdir results

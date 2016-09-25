@@ -12,5 +12,6 @@ uninstall:
 docs:
 	$(MAKE) -C docs
 
-clean:
-	$(MAKE) -C docs clean
+clean-recursive:
+	$(MAKE) -C docs clean-recursive
+	$(MAKE) -C test clean-recursive
