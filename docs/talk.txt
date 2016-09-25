@@ -6,8 +6,10 @@ git clone https://github.com/bmtober/sets
 
 =======================================
   sets
+  |-- docs
+  |   \`-- pic
   |-- market
-  |-- talk
+  |-- src
   \`-- test
       |-- data
       \`-- expected
@@ -42,7 +44,7 @@ $ B = {text{butter}, text{bacon}, text{sausage}, text{ham}, text{eggs}, text{bre
 
 image:pic/figure-01.png[]
 
-== Set Membership
+== Set Membership (Contains)
 
 ..................................................
 
@@ -366,4 +368,3 @@ Precision $text{Pr} =  (TP)/(TP + FP)$
 
 Recall $text{Re} = (TP)/(TP + FN)$
 ..................................................
-
