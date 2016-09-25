@@ -27,6 +27,7 @@ AUTHOR
 "
 
 infile="-"
+unset verbose
 
 while [[ $# -gt 0 ]]
 do
@@ -34,6 +35,10 @@ do
     -h)
       echo "${usage}"
       exit
+      ;;
+    -v)
+      shift
+      verbose=true
       ;;
     -*)
       echo "Invalid option '${1}'"
@@ -44,5 +49,6 @@ do
   shift
 done  
 
+[ -n "${verbose}" ] && echo "==> ${infile} <=="
 cat "${infile}" | sort | uniq
 
