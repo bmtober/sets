@@ -71,4 +71,4 @@ then
     echo "false"
   fi
 fi  
-
+exit $result
