@@ -42,12 +42,11 @@ echo "Testing probability"
 
 . assertion
 
+[[ -d results ]] || mkdir results
 
 # Initialize precision
 echo "4k" > results/probability.1
 echo "4k" > results/probability.2
-
-[[ -d results ]] || mkdir results
 
 trap 'rm X Y' EXIT
 

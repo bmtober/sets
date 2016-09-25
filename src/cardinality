@@ -22,7 +22,6 @@ AUTHOR
 
   http://www.catonmat.net/blog/set-operations-in-unix-shell/
 
-
 "
 
 infile="-"
@@ -46,11 +45,10 @@ do
   shift
 done  
 
-if [ -f "${infile}" ]
-then
-  cat "${infile}" | members | wc -l 
-elif [ -d "${infile}" ]
+if [ -d "${infile}" ]
 then
   ls "${infile}" | wc -l
+else
+  cat "${infile}" | members | wc -l 
 fi
 
