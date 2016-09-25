@@ -1,0 +1,27 @@
+. assertion
+
+PATH=":$PATH"
+
+echo "$(basename $0)"
+
+[[ -d results ]] || mkdir results
+
+tmpfile1=".$(basename $0).$$.1"
+tmpfile2=".$(basename $0).$$.2"
+trap 'rm "${tmpfile1}" "${tmpfile2}"' EXIT
+
+echo -e "milk\nbread" > "${tmpfile1}"
+echo -e "jam" > "${tmpfile2}"
+
+export CORPUS=data
+
+conviction "${tmpfile1}" "${tmpfile2}" > results/conviction.1
+
+
+echo
+assert 'diff expected/conviction.1 results/conviction.1 &> /dev/null'
+
+echo
+echo "PASS: ${success_count}"
+echo "FAIL: ${failure_count}"
+
