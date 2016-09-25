@@ -6,14 +6,19 @@ NAME
   ${me} - Lift of an association rule.
 
 SYNOPSIS
-  ${me} [OPTIONS] antecedent consequent directory
+  ${me} [OPTIONS] antecedent consequent
 
 DESCRIPTION
   ${me} returns the lift an association between the antiecedent
-        and the consequent over a directory of set files.
+        and the consequent.
 
 OPTIONS
   -h  Displays help message.
+
+  -d corpus
+    Specifies the directory with the data base of transaction itemsets.
+    Defaults to current directory or the CORPUS environment variable,
+    if set.
 
 AUTHOR
   Implementation by Berend M. Tober.
@@ -42,6 +47,11 @@ do
       echo "${usage}"
       exit
       ;;
+    -d)
+      shift
+      CORPUS="${1}"
+      [ ! -d "${CORPUS}" ] && echo "${CORPUS} is not a directory or not found." && exit 1
+      ;;
     -*)
       echo "Invalid option '${1}'"
       exit
@@ -63,9 +73,9 @@ tmpfile=".$(basename $0).$$"
 trap 'rm "${tmpfile}"' EXIT
 union "${antecedent}" "${consequent}" > "${tmpfile}"
 
-numerator=$(support "${tmpfile}" "${directory}")
-denominatorX=$(support "${antecedent}" "${directory}")
-denominatorY=$(support "${consequent}" "${directory}")
+numerator=$(support "${tmpfile}")
+denominatorX=$(support "${antecedent}")
+denominatorY=$(support "${consequent}")
 
 dc <<< "10k$numerator $denominatorX $denominatorY */p"
 

@@ -15,6 +15,8 @@ echo -e "milk\neggs" > "${tmpfile1}"
 echo -e "juice" > "${tmpfile2}"
 union "${tmpfile1}" "${tmpfile2}" > "${tmpfile3}"
 
+export CORPUS=data
+
 lift "${tmpfile1}" "${tmpfile2}" data/ > results/lift.1
 
 

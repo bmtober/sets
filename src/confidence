@@ -6,14 +6,20 @@ NAME
   ${me} - Confidence in an association rule.
 
 SYNOPSIS
-  ${me} [OPTIONS] antecedent consequent directory
+  ${me} [OPTIONS] antecedent consequent
 
 DESCRIPTION
   ${me} returns the confidence of an association between the antiecedent
-        and the consequent over a directory of set files.
+        and the consequent.
 
 OPTIONS
   -h  Displays help message.
+
+  -d corpus
+    Specifies the directory with the data base of transaction itemsets.
+    Defaults to current directory or the CORPUS environment variable,
+    if set.
+
 
 AUTHOR
   Implementation by Berend M. Tober.
@@ -33,15 +39,17 @@ checkscript "support"
 checkscript "union"
 checkscript "dc"
 
-
-directory="./"
-
 while [[ $# -gt 0 ]]
 do
   case "${1}" in
     -h)
       echo "${usage}"
       exit
+      ;;
+    -d)
+      shift
+      CORPUS="${1}"
+      [ ! -d "${CORPUS}" ] && echo "${CORPUS} is not a directory or not found." && exit 1
       ;;
     -*)
       echo "Invalid option '${1}'"
@@ -50,22 +58,19 @@ do
     *)
       antecedent="${1}"
       consequent="${2}"
-      directory="${3-./}"
-      shift 3
+      shift 2
       ;;
   esac
   shift
 done  
 
+
 [ ! -f  "${antecedent}" ] && echo "Antecedent '${antecedent}' not found." && exit
 [ ! -f  "${consequent}" ] && echo "Consequent '${consequent}' not found." && exit
+: ${CORPUS?}
 
-tmpfile=".$(basename $0).$$"
-trap 'rm "${tmpfile}"' EXIT
-union "${antecedent}" "${consequent}" > "${tmpfile}"
-
-numerator=$(support "${tmpfile}" "${directory}")
-denominator=$(support "${antecedent}" "${directory}")
+numerator=$(support "${antecedent}" "${consequent}")
+denominator=$(support "${antecedent}")
 
 dc <<< "10k$numerator $denominator /p"
 

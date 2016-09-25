@@ -8,15 +8,14 @@ echo "$(basename $0)"
 
 tmpfile1=".$(basename $0).$$.1"
 tmpfile2=".$(basename $0).$$.2"
-tmpfile3=".$(basename $0).$$.3"
-trap 'rm "${tmpfile1}" "${tmpfile2}" "${tmpfile3}"' EXIT
+trap 'rm "${tmpfile1}" "${tmpfile2}"' EXIT
 
 echo -e "milk\nbread" > "${tmpfile1}"
 echo -e "jam" > "${tmpfile2}"
-union "${tmpfile1}" "${tmpfile2}" > "${tmpfile3}"
 
-confidence "${tmpfile1}" "${tmpfile2}" data/ > results/confidence.1
+export CORPUS=data
 
+confidence "${tmpfile1}" "${tmpfile2}" > results/confidence.1
 
 echo
 assert 'diff expected/confidence.1 results/confidence.1 &> /dev/null'

@@ -15,13 +15,15 @@ echo -e "milk\nbread" > "${tmpfile1}"
 echo -e "jam" > "${tmpfile2}"
 union "${tmpfile1}" "${tmpfile2}" > "${tmpfile3}"
 
-support -l "${tmpfile1}" data/ > results/support.1
-support -l "${tmpfile2}" data/ > results/support.2
-support -l "${tmpfile3}" data/ > results/support.3
+export CORPUS=data
 
-support "${tmpfile1}" data/ > results/support.4
-support "${tmpfile2}" data/ > results/support.5
-support "${tmpfile3}" data/ > results/support.6
+support -l "${tmpfile1}"  > results/support.1
+support -l "${tmpfile2}"  > results/support.2
+support -l "${tmpfile3}"  > results/support.3
+
+support "${tmpfile1}" > results/support.4
+support "${tmpfile2}" > results/support.5
+support "${tmpfile3}" > results/support.6
 
 echo
 assert 'diff expected/support.1 results/support.1 &> /dev/null'

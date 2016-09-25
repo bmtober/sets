@@ -6,15 +6,24 @@ NAME
   ${me} - Support of an item set.
 
 SYNOPSIS
-  ${me} [OPTIONS] itemset directory
+  ${me} [OPTIONS] itemset
+  ${me} [OPTIONS] antecedent consequent
 
 DESCRIPTION
-  ${me} returns the support of an itemset amongst transactions in directory. 
+  The first form returns the support of an itemset.  The second form
+  returns the support of a implication for antecedent to consequent
+  item sets.
 
 OPTIONS
   -h  Displays help message.
 
   -l  List the set files that match the item set.
+
+  -d corpus
+    Specifies the directory with the data base of transaction itemsets.
+    Defaults to current directory or the CORPUS environment variable,
+    if set.
+
 
 AUTHOR
   Implementation by Berend M. Tober.
@@ -32,11 +41,12 @@ checkscript ()
 }
 
 checkscript "includes"
+checkscript "members"
 checkscript "dc"
 
-itemset="-"
-directory="./"
 unset listmatches
+itemset=".${me}.$$"
+trap 'rm "${itemset}"' EXIT
 
 while [[ $# -gt 0 ]]
 do
@@ -48,24 +58,29 @@ do
     -l)
       listmatches="true"
       ;;
+    -d)
+      shift
+      CORPUS="${1}"
+      [ ! -d "${CORPUS}" ] && echo "${CORPUS} is not a directory or not found." && exit 1
+      ;;
     -*)
       echo "Invalid option '${1}'"
       exit
       ;;
     *)
-      itemset="${1--}"
-      directory="${2-./}"
-      shift 2
+      members "${1--}" >> "${itemset}"
       ;;
   esac
   shift
 done  
 
+: ${CORPUS?}
+
 [ ! -f  "${itemset}" ] && echo "Itemset '${itemset}' not found." && exit
 
 numerator=0
 denominator=0
-for n in $(find "${directory}" -type f)
+for n in $(find "${CORPUS}" -type f)
 do
   denominator=$((denominator + 1))
   includes "${itemset}" "${n}"
