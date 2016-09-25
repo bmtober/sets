@@ -8,7 +8,6 @@ git clone https://github.com/bmtober/sets
   sets
   |-- docs
   |   \`-- pic
-  |-- market
   |-- src
   \`-- test
       |-- data
@@ -58,13 +57,6 @@ $ text{milk} in A, text{milk} notin B $
 
 image:pic/figure-02.png[]
 
-== Empty Set
-
-..................................................
-$ {} $
-..................................................
-
-
 
 == Cardinality
 
@@ -76,6 +68,15 @@ $ B = {text{butter}, text{bacon}, text{sausage}, text{ham}, text{eggs}, text{bre
 $ |A| = 5 $
 
 $ |B| = 6 $ 
+
+$ |X|  = sum_i delta(x_i in X) $ 
+..................................................
+
+
+== Empty Set
+
+..................................................
+$ {} $
 
 $ |{}| = 0 $
 ..................................................
@@ -164,18 +165,6 @@ $ A nn D = {} $
 ..................................................
 
 
-== Symmetric Difference
-
-..................................................
-$ A = {text{milk}, text{juice}, text{bread}, text{jam}, text{eggs}} $
-
-$ B = {text{butter}, text{bacon}, text{sausage}, text{ham}, text{eggs}, text{bread}} $
-
-$ A Delta B = (A uu B) - (A nn B) = 
-{text{bacon}, text{butter}, text{ham}, text{jam}, text{juice}, text{milk}, text{sausage}} $
-..................................................
-
-
 == Relative Complement
 
 ..................................................
@@ -189,6 +178,18 @@ $ B - A = {text{bacon}, text{butter}, text{ham}, text{sausage}} $
 ..................................................
 
 
+== Symmetric Difference
+
+..................................................
+$ A = {text{milk}, text{juice}, text{bread}, text{jam}, text{eggs}} $
+
+$ B = {text{butter}, text{bacon}, text{sausage}, text{ham}, text{eggs}, text{bread}} $
+
+$ A Delta B = (A uu B) - (A nn B) = 
+{text{bacon}, text{butter}, text{ham}, text{jam}, text{juice}, text{milk}, text{sausage}} $
+..................................................
+
+
 == Cross Product
 
 ..................................................
@@ -198,22 +199,27 @@ $ F = {
 text{butter}, text{bacon}, 
 } $
 
-$ D xx F = 
+$ F xx D = 
 {
-text{(chicken, bacon)}, 
-text{(chicken, butter)},
-text{(fish, bacon)},
-text{(fish, butter)}, $
+text{(bacon, chicken)},
+text{(bacon, fish)},
+text{(bacon, ham)},
+text{(bacon, steak)},
 $
-text{        }
-text{(ham, bacon)},
-text{(ham, butter)},
-text{(steak, bacon)},
-text{(steak, butter)}
+$  
+text{(butter, chicken)},
+text{(butter, fish)},
+text{(butter, ham)},
+text{(butter, steak)}
 }$
 
 ..................................................
 
+|=================================================
+|$xx$|chicken|fish|ham|steak
+|bacon|(bacon, chicken)|(bacon, fish)|(bacon, ham)|(bacon, steak)
+|butter|(butter, chicken)|(butter, fish)|(butter, ham)|(butter, steak)
+|=================================================
 
 == Power Set
 
@@ -296,7 +302,7 @@ $ {text{milk}, text{eggs}} => {text{jam}} $
 == Support
 
 ..................................................
-$ text{supp}(X => Y) = (sum_(i=1)^n delta(({X uu Y} sube t_i)))/|T| $, i.e.,  the proportion 
+$ text{supp}(X => Y) = (sum_(i=1)^n delta((X uu Y) sube t_i))/|T| $, i.e.,  the proportion 
 of transactions that contain both $X$ and $Y$
 
 $ X = {text{milk}, text{bread}} $
@@ -368,3 +374,4 @@ Precision $text{Pr} =  (TP)/(TP + FP)$
 
 Recall $text{Re} = (TP)/(TP + FN)$
 ..................................................
+==> test/data/F x test/data/D <==
