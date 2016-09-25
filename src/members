@@ -18,6 +18,8 @@ DESCRIPTION
 OPTIONS
   -h  Displays help message.
 
+  -v  Increase verbosity.
+
 AUTHOR
   Implementation by Berend M. Tober based on article by Peteris Krumins at 
 
@@ -37,15 +39,17 @@ do
       exit
       ;;
     -v)
-      shift
       verbose=true
       ;;
     -*)
       echo "Invalid option '${1}'"
       exit
       ;;
+    *)
+      infile="${1--}"
+      shift 
+      ;;
   esac
-  infile="${1--}"
   shift
 done  
 

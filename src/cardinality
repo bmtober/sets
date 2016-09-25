@@ -17,6 +17,8 @@ DESCRIPTION
 OPTIONS
   -h  Displays help message.
 
+  -v  Increase verbosity.
+
 AUTHOR
   Implementation by Berend M. Tober based on article by Peteris Krumins at 
 
@@ -25,6 +27,7 @@ AUTHOR
 "
 
 infile="-"
+unset verbose
 
 while [[ $# -gt 0 ]]
 do
@@ -33,18 +36,22 @@ do
       echo "${usage}"
       exit
       ;;
+    -v)
+      verbose=true
+      ;;
     -*)
       echo "Invalid option '${1}'"
       exit
       ;;
     *)
       infile="${1--}"
-      shift
+      shift 
       ;;
   esac
   shift
 done  
 
+[ -n "${verbose}" ] && echo "==> ${infile} <=="
 if [ -d "${infile}" ]
 then
   ls "${infile}" | wc -l

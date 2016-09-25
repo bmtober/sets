@@ -14,6 +14,8 @@ DESCRIPTION
 OPTIONS
   -h  Displays help message.
 
+  -v  Increase verbosity.
+
 AUTHOR
   Implementation by Berend M. Tober based on article by Peteris Krumins at 
 
@@ -24,6 +26,7 @@ AUTHOR
 
 infile1="-"
 infile2="-"
+unset verbose
 
 while [[ $# -gt 0 ]]
 do
@@ -31,6 +34,9 @@ do
     -h)
       echo "${usage}"
       exit
+      ;;
+    -v)
+      verbose=true
       ;;
     -*)
       echo "Invalid option '${1}'"
@@ -45,5 +51,6 @@ do
   shift
 done  
 
+[ -n "${verbose}" ] && echo "==> ${infile1} || ${infile2} <=="
 cat "${infile1}" "${infile2}" | members 
 
