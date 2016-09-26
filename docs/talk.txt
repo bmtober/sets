@@ -215,6 +215,7 @@ text{(butter, steak)}
 
 ..................................................
 
+[cols="h,4*",options="header"]
 |=================================================
 |$xx$|chicken|fish|ham|steak
 |bacon|(bacon, chicken)|(bacon, fish)|(bacon, ham)|(bacon, steak)
