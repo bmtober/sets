@@ -375,4 +375,3 @@ Precision $text{Pr} =  (TP)/(TP + FP)$
 
 Recall $text{Re} = (TP)/(TP + FN)$
 ..................................................
-==> test/data/F x test/data/D <==
