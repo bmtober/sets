@@ -132,9 +132,9 @@ $ B = {text{butter}, text{bacon}, text{sausage}, text{ham}, text{eggs}, text{bre
 $ A uu B = {x | x in A or x in B } 
 
  = {text{bacon}, text{bread}, text{butter}, text{eggs}, text{ham}, text{jam}, text{juice}, text{milk}, text{sausage}} $
-
 ..................................................
 
+image:pic/figure-05.png[]
 
 
 
