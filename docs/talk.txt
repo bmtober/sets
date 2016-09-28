@@ -147,9 +147,9 @@ $ B = {text{butter}, text{bacon}, text{sausage}, text{ham}, text{eggs}, text{bre
 
 $ A nn B = {x | x in A and x in B } 
  = {text{bread}, text{eggs}} $
-
-
 ..................................................
+
+image:pic/figure-06.png[]
 
 
 
