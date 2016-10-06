@@ -1,4 +1,4 @@
-SOURCES=figure-01.pic figure-02.pic figure-03.pic figure-04.pic figure-05.pic figure-06.pic figure-07.pic
+SOURCES=figure-01.pic figure-02.pic figure-03.pic figure-04.pic figure-05.pic figure-06.pic figure-07.pic figure-08.pic
 
 TARGETS=$(SOURCES:%.pic=%.png)
 

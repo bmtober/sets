@@ -82,46 +82,6 @@ $ |{}| = 0 $
 ..................................................
 
 
-== Subset (Includes)
-
-..................................................
-$ X sube Y iff x in X => x in Y $
-
-$ {text{butter}, text{bacon}} sube 
- {text{butter}, text{bacon}, text{sausage}, text{ham}, text{eggs}, text{bread}} $
-..................................................
-
-image:pic/figure-03.png[]
-
-
-== Set Equality
-
-..................................................
-$ X = Y iff X sube Y and Y sube X $
-
-That is, $X$ and $Y$ have exactly the same membership, and
-consequently, $ |X| = |Y|$.
-..................................................
-
-image:pic/figure-04.png[]
-
-== Proper Subset
-
-..................................................
-$ X sub Y iff X sube Y and X != Y $
-
-Note
-
-$ |X| < |Y| $
-
-$ B = {text{butter}, text{bacon}, text{sausage}, text{ham}, text{eggs}, text{bread}} $
-
-$ F = {text{butter}, text{bacon}} $
-
-$ F sub B $ since all members of $F$ are members of $B$ but $F != B$.
-
-..................................................
-
 == Union
 
 ..................................................
@@ -189,6 +149,47 @@ $ A Delta B = (A uu B) - (A nn B) =
 {text{bacon}, text{butter}, text{ham}, text{jam}, text{juice}, text{milk}, text{sausage}} $
 ..................................................
 
+
+
+== Subset (Includes)
+
+..................................................
+$ X sube Y iff x in X => x in Y $
+
+$ {text{butter}, text{bacon}} sube 
+ {text{butter}, text{bacon}, text{sausage}, text{ham}, text{eggs}, text{bread}} $
+..................................................
+
+image:pic/figure-03.png[]
+
+
+== Set Equality
+
+..................................................
+$ X = Y iff X sube Y and Y sube X $
+
+That is, $X$ and $Y$ have exactly the same membership, and
+consequently, $ |X| = |Y|$.
+..................................................
+
+image:pic/figure-04.png[]
+
+== Proper Subset
+
+..................................................
+$ X sub Y iff X sube Y and X != Y $
+
+Note
+
+$ |X| < |Y| $
+
+$ B = {text{butter}, text{bacon}, text{sausage}, text{ham}, text{eggs}, text{bread}} $
+
+$ F = {text{butter}, text{bacon}} $
+
+$ F sub B $ since all members of $F$ are members of $B$ but $F != B$.
+
+..................................................
 
 == Cross Product
 
@@ -325,8 +326,10 @@ $ Y = {text{jam}} $
 $ X uu Y sube A, G $
 
 $ text{supp}(X => Y) = 2/7 $
-
 ..................................................
+
+image:pic/figure-08.png[]
+
 
 == Confidence
 
