@@ -268,6 +268,19 @@ text{{}}
 == Association Rules
 
 ..................................................
+$ X => Y $, i.e., observation of $X$ implies probable presence of $Y$
+
+$X nn Y = {}$, i.e., disjoint
+
+$ {text{milk}, text{bread}} => {text{jam}} $
+
+$ {text{milk}, text{eggs}} => {text{jam}} $
+..................................................
+
+
+== Association Rules
+
+..................................................
 $ I = {i_1, i_2, ... i_m} $ is the set of all items
 $ = {text{bacon}, text{bread}, text{butter}, text{chicken}, text{eggs}, text{fish}, 
   text{ham}, text{jam}, text{juice}, text{milk}, text{sausage}, text{steak}}$
@@ -285,20 +298,6 @@ $ t_7 = G = {text{milk}, text{bacon}, text{bread}, text{jam}, text{eggs}} $
 
 $ |T| = 7 $ for this example.
 ..................................................
-
-== Association Rule
-
-..................................................
-$ X => Y $, i.e., observation of itemset $X$ implies probable 
-presence of itemset $Y$
-
-$X nn Y = {}$, i.e., disjoint selections from power(I)
-
-$ {text{milk}, text{bread}} => {text{jam}} $
-
-$ {text{milk}, text{eggs}} => {text{jam}} $
-..................................................
-
 
 == Support
 
@@ -364,8 +363,33 @@ $ X uu Y sube A, G $
 
 
 $ text{conv}(X => Y) = (1 - 2/7)/(1 - 2/3) = (5//7)/(1//3) = 15/7 $
-
 ..................................................
+
+== Confusion Matrix
+
+[cols="4*^.^", width="60%"]
+|======================
+2.2+| 2+|Predicted Class 
+|Positive|Negative
+.2+|Actual Class|Positive|$m_(00)$|$m_(01)$
+|Negative |$m_(10)$ |$m_(11)$
+|======================
+
+.Note 
+
+$m_(ij)$ is the number of messages actually in class $i$ and identified as class $j$
+
+$i=j$ implies correct classification
+
+$i!=j$ implies incorrect classification
+
+$m_(00)$ = True Positive
+
+$m_(10)$ = False Positive
+
+$m_(11)$ = True Negative
+
+$m_(01)$ = False Negative
 
 
 == Precision and Recall
@@ -373,11 +397,16 @@ $ text{conv}(X => Y) = (1 - 2/7)/(1 - 2/3) = (5//7)/(1//3) = 15/7 $
 ..................................................
 Precision: how useful the search results are
 
-$text{Pr} =  (TP)/(TP + FP)$
+$text{Pr} =  (m_(00))/(m_(00) + m_(10))$
 
 
 Recall: how complete the results are
 
-$text{Re} = (TP)/(TP + FN)$
-
+$text{Re} = (m_(00))/(m_(00) + m_(01))$
 ..................................................
+
+== Accuracy
+
+$ A = (m_(00) + m_(11))/(m_(00) + m_(01) + m_(10) + m_(11)) $
+
+
