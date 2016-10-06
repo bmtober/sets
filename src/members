@@ -18,6 +18,8 @@ DESCRIPTION
 OPTIONS
   -h  Displays help message.
 
+  -c  Canonicalized extensional formatting.
+
   -v  Increase verbosity.
 
 AUTHOR
@@ -29,7 +31,7 @@ AUTHOR
 "
 
 infile="-"
-unset verbose
+unset verbose canonicalize
 
 while [[ $# -gt 0 ]]
 do
@@ -37,6 +39,9 @@ do
     -h)
       echo "${usage}"
       exit
+      ;;
+    -c)
+      canonicalize=true
       ;;
     -v)
       verbose=true
@@ -54,5 +59,10 @@ do
 done  
 
 [ -n "${verbose}" ] && echo "==> ${infile} <=="
-cat "${infile}" | sort | uniq
+if [ -z "${canonicalize}" ]
+then
+  cat "${infile}" | sort | uniq
+else
+  cat "${infile}" | sort | uniq | awk 'BEGIN{printf("{")};{if (NR==1) printf("%s", $0); else printf(", %s",$0); end}; END{print "}"}'
+fi
 
