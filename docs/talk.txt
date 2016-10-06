@@ -302,6 +302,19 @@ $ |T| = 7 $ for this example.
 == Support
 
 ..................................................
+$ text{supp}(X) = (sum_(i=1)^n delta((X) sube t_i))/|T| $, i.e.,  the proportion of transactions that contain set $X$
+
+$ X = {text{milk}, text{bread}} $
+
+$ X sube A, E, G $
+
+$ text{supp}(X => Y) = 3/7 $
+
+..................................................
+
+== Support for an Association Rule
+
+..................................................
 $ text{supp}(X => Y) = (sum_(i=1)^n delta((X uu Y) sube t_i))/|T| $, i.e.,  the proportion 
 of transactions that contain both $X$ and $Y$
 
