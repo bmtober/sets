@@ -387,9 +387,9 @@ $ text{conv}(X => Y) = (1 - 2/7)/(1 - 2/3) = (5//7)/(1//3) = 15/7 $
 [cols="4*^.^", width="60%"]
 |======================
 2.2+| 2+|Predicted Class 
-|Positive|Negative
-.2+|Actual Class|Positive|$m_(00)$|$m_(01)$
-|Negative |$m_(10)$ |$m_(11)$
+|Negative|Postive
+.2+|Actual Class|Negative|$m_(00)$|$m_(01)$
+|Postive |$m_(10)$ |$m_(11)$
 |======================
 
 .Note 
@@ -400,13 +400,13 @@ $i=j$ implies correct classification
 
 $i!=j$ implies incorrect classification
 
-$m_(00)$ = True Positive
+$m_(00)$ = True Negative
 
-$m_(10)$ = False Positive
+$m_(10)$ = False Negative
 
-$m_(11)$ = True Negative
+$m_(11)$ = True Postive
 
-$m_(01)$ = False Negative
+$m_(01)$ = False Postive
 
 
 == Precision and Recall
@@ -414,12 +414,12 @@ $m_(01)$ = False Negative
 ..................................................
 Precision: how useful the search results are
 
-$text{Pr} =  (m_(00))/(m_(00) + m_(10))$
+$text{Pr} =  (m_(11))/(m_(11) + m_(01))$
 
 
 Recall: how complete the results are
 
-$text{Re} = (m_(00))/(m_(00) + m_(01))$
+$text{Re} = (m_(11))/(m_(11) + m_(10))$
 ..................................................
 
 == Accuracy
