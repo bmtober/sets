@@ -309,7 +309,7 @@ $ X = {text{milk}, text{bread}} $
 
 $ X sube A, E, G $
 
-$ text{supp}(X => Y) = 3/7 $
+$ text{supp}(X) = 3/7 $
 ..................................................
 
 image:pic/figure-07.png[]
@@ -344,8 +344,9 @@ $ X sube A, E, G $
 $ X uu Y sube A, G $
 
 $ text{conf}(X => Y) = (2//7)/(3//7) = 2/3 $
-
 ..................................................
+
+image:pic/figure-09.png[]
 
 == Lift
 
