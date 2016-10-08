@@ -15,6 +15,8 @@ DESCRIPTION
 OPTIONS
   -h  Displays help message.
 
+  -v  Increase verbosity.
+
 AUTHOR
   Implementation by Berend M. Tober based on article by Peteris Krumins at 
 
@@ -23,8 +25,8 @@ AUTHOR
 
 "
 
-element=""
 infile="-"
+unset verbose element
 
 while [[ $# -gt 0 ]]
 do
@@ -32,6 +34,9 @@ do
     -h)
       echo "${usage}"
       exit
+      ;;
+    -v)
+      verbose=true
       ;;
     -*)
       echo "Invalid option '${1}'"
@@ -46,5 +51,6 @@ do
   shift
 done  
 
+[ -n "${verbose}" ] && echo "==> ${infile} contains ${element} <=="
 cat "${infile}" | grep -xq "${element}"
 
