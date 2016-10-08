@@ -154,7 +154,9 @@ $ A Delta B = (A uu B) - (A nn B) =
 == Subset (Includes)
 
 ..................................................
-$ X sube Y iff x in X => x in Y $
+$ F sube B iff x in F => x in B $
+
+$ F - B = {} $
 
 $ {text{butter}, text{bacon}} sube 
  {text{butter}, text{bacon}, text{sausage}, text{ham}, text{eggs}, text{bread}} $
@@ -177,11 +179,11 @@ image:pic/figure-04.png[]
 == Proper Subset
 
 ..................................................
-$ X sub Y iff X sube Y and X != Y $
+$ F sub B iff F sube B and F != B $
 
 Note
 
-$ |X| < |Y| $
+$ |F| < |B| $
 
 $ B = {text{butter}, text{bacon}, text{sausage}, text{ham}, text{eggs}, text{bread}} $
 
