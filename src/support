@@ -46,7 +46,7 @@ checkscript "dc"
 
 unset listmatches
 itemset=".${me}.$$"
-trap 'rm "${itemset}"' EXIT
+trap '[ -f "${itemset}" ] && rm "${itemset}"' EXIT
 
 while [[ $# -gt 0 ]]
 do
