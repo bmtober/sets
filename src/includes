@@ -65,7 +65,7 @@ trap '[ -f "${itemset}" ] && rm "${itemset}"' EXIT
 
 cat "${infile2}" > "${itemset}"
 
-[ -n "${verbose}" ] && echo "==> ${infile1} contains  ${infile2} <=="
+[ -n "${verbose}" ] && echo "==> ${infile1} includes ${infile2} <=="
 [ $(complement "${itemset}" "${infile1}" | wc -l) -eq 0 ] 
 result=$?
 if [ -n "${verbose}" ]
