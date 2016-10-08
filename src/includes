@@ -9,7 +9,7 @@ SYNOPSIS
   ${me} [OPTIONS] setA setB
 
 DESCRIPTION
-  ${me} returns exit value 0 if set A is a subset of set B.
+  ${me} returns exit value 0 if set B is a subset of set A.
 
 OPTIONS
   -h  Displays help message.
@@ -33,7 +33,7 @@ checkscript ()
 
 checkscript "complement"
 
-infile1="-"
+infile1=""
 infile2="-"
 
 while [[ $# -gt 0 ]]
@@ -51,7 +51,7 @@ do
       exit
       ;;
     *)
-      infile1="${1--}"
+      infile1="${1}"
       infile2="${2--}"
       shift 2
       ;;
@@ -59,8 +59,14 @@ do
   shift
 done  
 
-[ -n "${verbose}" ] && echo "==> ${infile2} contains  ${infile1} <=="
-[ $(complement "${infile1}" "${infile2}" | wc -l) -eq 0 ] 
+
+itemset=".${me}.$$"
+trap '[ -f "${itemset}" ] && rm "${itemset}"' EXIT
+
+cat "${infile2}" > "${itemset}"
+
+[ -n "${verbose}" ] && echo "==> ${infile1} contains  ${infile2} <=="
+[ $(complement "${itemset}" "${infile1}" | wc -l) -eq 0 ] 
 result=$?
 if [ -n "${verbose}" ]
 then

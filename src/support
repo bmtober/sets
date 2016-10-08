@@ -67,7 +67,7 @@ do
       exit
       ;;
     *)
-      members "${1--}" >> "${itemset}"
+      cat "${1--}" | members >> "${itemset}"
       ;;
   esac
   shift
@@ -83,7 +83,7 @@ denominator=0
 for n in $(find "${CORPUS}" -type f)
 do
   denominator=$((denominator + 1))
-  includes "${itemset}" "${n}"
+  includes "${n}" "${itemset}"
   result=$?
   [ ${result} -eq 0 ] && numerator=$((numerator + 1))
   [ -n "${listmatches}" ] && [ ${result} -eq 0 ] && echo "${n}"
