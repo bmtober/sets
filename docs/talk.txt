@@ -256,8 +256,9 @@ text{{}}
 
 == Applications of Set Theory
 
-..................................................
-..................................................
+- Item Sets
+- Association Rules
+- Metrics 
 
 
 == Probability
@@ -265,21 +266,7 @@ text{{}}
 ..................................................
 ..................................................
 
-
-== Association Rules
-
-..................................................
-$ X => Y $, i.e., observation of $X$ implies probable presence of $Y$
-
-$X nn Y = {}$, i.e., disjoint
-
-$ {text{milk}, text{bread}} => {text{jam}} $
-
-$ {text{milk}, text{eggs}} => {text{jam}} $
-..................................................
-
-
-== Association Rules
+== Item Sets 
 
 ..................................................
 $ I = {i_1, i_2, ... i_m} $ is the set of all items
@@ -300,6 +287,28 @@ $ t_7 = G = {text{milk}, text{bacon}, text{bread}, text{jam}, text{eggs}} $
 $ |T| = 7 $ for this example.
 ..................................................
 
+
+== Association Rules
+
+..................................................
+$ X => Y $, i.e., observation of $X$ implies probable presence of $Y$
+
+$X nn Y = {}$, i.e., disjoint
+
+$ {text{milk}, text{bread}} => {text{jam}} $
+
+$ {text{milk}, text{eggs}} => {text{jam}} $
+..................................................
+
+
+== Rule Evaluation Metrics
+
+- Support
+- Confidence
+- Lift
+- Conviction
+
+
 == Support
 
 ..................................................
@@ -317,8 +326,7 @@ image:pic/figure-07.png[]
 == Support for an Association Rule
 
 ..................................................
-$ text{supp}(X => Y) = (sum_(i=1)^n delta((X uu Y) sube t_i))/|T| $, i.e.,  the proportion 
-of transactions that contain both $X$ and $Y$
+$ text{supp}(X => Y) = (sum_(i=1)^n delta((X uu Y) sube t_i))/|T| $, i.e., transactions that contain both $X$ and $Y$ 
 
 $ X = {text{milk}, text{bread}} $
 $ Y = {text{jam}} $
@@ -334,8 +342,7 @@ image:pic/figure-08.png[]
 == Confidence
 
 ..................................................
-$ text{conf}(X => Y) = (text{supp}(X uu Y))/(text{supp}(X))$ , i.e., the proportion 
-of transactions containing $Y$ amongst the transactions that contain $X$
+$ text{conf}(X => Y) = (text{supp}(X uu Y))/(text{supp}(X))$ , i.e., how often $Y$ appears in transactions with $X$
 
 $ X = {text{milk}, text{bread}} $
 $ Y = {text{jam}} $
