@@ -78,6 +78,8 @@ $ |X|  = sum_i delta(x_i in X) $
 ..................................................
 $ {} $
 
+$ forall x, x notin {}$
+
 $ |{}| = 0 $
 ..................................................
 
@@ -133,9 +135,22 @@ $ A = {text{milk}, text{juice}, text{bread}, text{jam}, text{eggs}} $
 $ B = {text{butter}, text{bacon}, text{sausage}, text{ham}, text{eggs}, text{bread}} $
 
 $ A - B = {text{jam}, text{juice}, text{milk}} $
-
-$ B - A = {text{bacon}, text{butter}, text{ham}, text{sausage}} $
 ..................................................
+
+image:pic/figure-10.png[]
+
+
+== Relative Complement
+
+..................................................
+$ A = {text{milk}, text{juice}, text{bread}, text{jam}, text{eggs}} $
+
+$ B = {text{butter}, text{bacon}, text{sausage}, text{ham}, text{eggs}, text{bread}} $
+
+$ B - A = {text{bacon}, text{butter}, text{ham}, text{sausage}}  != A - B $
+..................................................
+
+image:pic/figure-11.png[]
 
 
 == Symmetric Difference
