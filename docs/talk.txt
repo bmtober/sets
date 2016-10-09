@@ -360,8 +360,8 @@ image:pic/figure-09.png[]
 == Lift
 
 ..................................................
-$ text{lift}(X => Y) = (text{supp}(X uu Y))/(text{supp}(X)xxtext{supp}(Y))$, or the 
-ratio of observed support to that expected if $X$ and $Y$ were independent.
+$ text{lift}(X => Y) = (text{supp}(X uu Y))/(text{supp}(X)xxtext{supp}(Y))$  
+
 
 $ X = {text{milk}, text{bread}} $
 $ Y = {text{jam}} $
