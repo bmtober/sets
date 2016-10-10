@@ -13,8 +13,8 @@ dcircle() {
   convert -size ${width}x${height} xc:none -fill $color -draw "circle $x0, $y0, $x1, $y1" ${file}.png
 }
 
-dcircle 126 141 125 grey A 
-dcircle 200 141 140 grey B 
+dcircle 126 141 125 gray55 A 
+dcircle 200 141 140 gray55 B 
 
 convert A.png B.png -compose xor -composite xorAB.png
 convert A.png B.png -compose out -composite outAB.png
