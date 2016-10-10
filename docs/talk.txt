@@ -97,6 +97,7 @@ $ A uu B = {x | x in A or x in B }
 ..................................................
 
 image:pic/figure-05.png[]
+image:images/overAB.png[]
 
 
 
@@ -112,6 +113,7 @@ $ A nn B = {x | x in A and x in B }
 ..................................................
 
 image:pic/figure-06.png[]
+image:images/inAB.png[]
 
 
 
@@ -138,6 +140,7 @@ $ A - B = {text{jam}, text{juice}, text{milk}} $
 ..................................................
 
 image:pic/figure-10.png[]
+image:images/dstoutAB.png[]
 
 
 == Relative Complement
@@ -151,6 +154,7 @@ $ B - A = {text{bacon}, text{butter}, text{ham}, text{sausage}}  != A - B $
 ..................................................
 
 image:pic/figure-11.png[]
+image:images/outAB.png[]
 
 
 == Symmetric Difference
@@ -164,6 +168,7 @@ $ A Delta B = (A uu B) - (A nn B) =
 {text{bacon}, text{butter}, text{ham}, text{jam}, text{juice}, text{milk}, text{sausage}} $
 ..................................................
 
+image:images/xorAB.png[]
 
 
 == Subset (Includes)

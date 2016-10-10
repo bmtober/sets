@@ -1,0 +1,12 @@
+
+  convert -size 60x60 xc:none -fill red \
+          -draw 'circle 30,21 30,3'   compose_R.png
+  convert -size 60x60 xc:none -fill lime \
+          -draw 'circle 39,39 36,57'  compose_G.png
+  convert -size 60x60 xc:none -fill blue \
+          -draw 'circle 21,39 24,57'  compose_B.png
+  composite -compose plus  compose_R.png compose_G.png  compose_plus_RG.png
+  composite -compose plus  compose_R.png compose_B.png  compose_plus_RB.png
+  composite -compose plus  compose_G.png compose_B.png  compose_plus_GB.png
+  composite -compose plus  compose_R.png compose_plus_GB.png \
+            compose_plus_RGB.png
