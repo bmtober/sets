@@ -329,7 +329,7 @@ $ {text{milk}, text{eggs}} => {text{jam}} $
 == Support
 
 ..................................................
-$ text{supp}(X) = (sum_(i=1)^n delta(X sube t_i))/|T| $
+$ text{supp}(X) = (sum_(i=1)^n delta((X) sube t_i))/|T| $, i.e.,  the proportion of transactions that contain set $X$
 
 $ X = {text{milk}, text{bread}} $
 
@@ -343,7 +343,7 @@ image:pic/figure-07.png[]
 == Support for an Association Rule
 
 ..................................................
-$ text{supp}(X => Y) = (sum_(i=1)^n delta((X uu Y) sube t_i))/|T| $
+$ text{supp}(X => Y) = (sum_(i=1)^n delta((X uu Y) sube t_i))/|T| $, i.e., transactions that contain both $X$ and $Y$ 
 
 $ X = {text{milk}, text{bread}} $
 $ Y = {text{jam}} $
@@ -359,7 +359,7 @@ image:pic/figure-08.png[]
 == Confidence
 
 ..................................................
-$ text{conf}(X => Y) = (text{supp}(X uu Y))/(text{supp}(X))$
+$ text{conf}(X => Y) = (text{supp}(X uu Y))/(text{supp}(X))$ , i.e., how often $Y$ appears in transactions with $X$
 
 $ X = {text{milk}, text{bread}} $
 $ Y = {text{jam}} $
@@ -375,7 +375,8 @@ image:pic/figure-09.png[]
 == Lift
 
 ..................................................
-$ text{lift}(X => Y) = (text{supp}(X uu Y))/(text{supp}(X)xxtext{supp}(Y))$
+$ text{lift}(X => Y) = (text{supp}(X uu Y))/(text{supp}(X)xxtext{supp}(Y))$  
+
 
 $ X = {text{milk}, text{bread}} $
 $ Y = {text{jam}} $
@@ -391,7 +392,9 @@ $ text{lift}(X => Y) = (2/7)/((3/7)*(2/7)) = 7/3 $
 == Conviction
 
 ..................................................
-$ text{conv}(X => Y) = (1 - text{supp}(Y))/(1 - text{conf}(X => Y))$
+$ text{conv}(X => Y) = (1 - text{supp}(Y))/(1 - text{conf}(X => Y))$ , i.e., the 
+ratio of the expected frequency that $X$ occurs without $Y$ if $X$ and $Y$ were independent
+to the observed frequency of incorrect predictions.
 
 $ X = {text{milk}, text{bread}} $
 $ Y = {text{jam}} $
