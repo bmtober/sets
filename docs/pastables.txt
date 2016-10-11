@@ -1,0 +1,28 @@
+1. Command Line Data Science: Set Theory and Association Rules
+2. Command Line Data Science: Set Theory and Association Rules(2)
+3. Get the Code!
+4. Review of Set Theory
+5. What is a Set
+6. Set Membership (Contains)
+7. Cardinality
+8. Empty Set
+9. Union
+10. Intersection
+11. Disjoint
+12. Relative Complement
+13. Relative Complement
+14. Symmetric Difference
+15. Subset (Includes)
+16. Set Equality
+17. Proper Subset
+18. Cross Product
+19. Power Set
+20. Applications of Set Theory
+21. Item Sets
+22. Association Rules
+23. Rule Evaluation Metrics
+24. Support
+25. Support for an Association Rule
+26. Confidence
+27. Lift
+28. Conviction
