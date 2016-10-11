@@ -97,7 +97,6 @@ $ A uu B = {x | x in A or x in B }
 ..................................................
 
 image:pic/figure-05.png[]
-image:images/overAB.png[]
 
 
 
@@ -112,7 +111,7 @@ $ A nn B = {x | x in A and x in B }
  = {text{bread}, text{eggs}} $
 ..................................................
 
-image:pic/figure-06.png[]
+// image:pic/figure-06.png[]
 image:images/inAB.png[]
 
 
@@ -140,7 +139,7 @@ $ A - B = {text{jam}, text{juice}, text{milk}} $
 ..................................................
 
 image:pic/figure-10.png[]
-image:images/dstoutAB.png[]
+//image:images/dstoutAB.png[]
 
 
 == Relative Complement
@@ -154,7 +153,7 @@ $ B - A = {text{bacon}, text{butter}, text{ham}, text{sausage}}  != A - B $
 ..................................................
 
 image:pic/figure-11.png[]
-image:images/outAB.png[]
+//image:images/outAB.png[]
 
 
 == Symmetric Difference
@@ -283,11 +282,6 @@ text{{}}
 - Metrics 
 
 
-== Probability
-
-..................................................
-..................................................
-
 == Item Sets 
 
 ..................................................
@@ -336,7 +330,7 @@ $ {text{milk}, text{eggs}} => {text{jam}} $
 == Support
 
 ..................................................
-$ text{supp}(X) = (sum_(i=1)^n delta((X) sube t_i))/|T| $, i.e.,  the proportion of transactions that contain set $X$
+$ text{supp}(X) = (sum_(i=1)^n delta((X) sube t_i))/|T| $
 
 $ X = {text{milk}, text{bread}} $
 
@@ -350,7 +344,7 @@ image:pic/figure-07.png[]
 == Support for an Association Rule
 
 ..................................................
-$ text{supp}(X => Y) = (sum_(i=1)^n delta((X uu Y) sube t_i))/|T| $, i.e., transactions that contain both $X$ and $Y$ 
+$ text{supp}(X => Y) = (sum_(i=1)^n delta((X uu Y) sube t_i))/|T| $
 
 $ X = {text{milk}, text{bread}} $
 $ Y = {text{jam}} $
@@ -366,7 +360,7 @@ image:pic/figure-08.png[]
 == Confidence
 
 ..................................................
-$ text{conf}(X => Y) = (text{supp}(X uu Y))/(text{supp}(X))$ , i.e., how often $Y$ appears in transactions with $X$
+$ text{conf}(X => Y) = (text{supp}(X uu Y))/(text{supp}(X))$
 
 $ X = {text{milk}, text{bread}} $
 $ Y = {text{jam}} $
@@ -382,15 +376,14 @@ image:pic/figure-09.png[]
 == Lift
 
 ..................................................
-$ text{lift}(X => Y) = (text{supp}(X uu Y))/(text{supp}(X)xxtext{supp}(Y))$  
-
+$ text{lift}(X => Y) = (text{supp}(X uu Y))/(text{supp}(X)xxtext{supp}(Y)) = (text{conf}(X uu Y))/(text{supp}(Y))$
 
 $ X = {text{milk}, text{bread}} $
 $ Y = {text{jam}} $
 
+$ X uu Y sube A, G $
 $ X sube A, E, G, I $
 $ Y sube A, G, H $
-$ X uu Y sube A, G $
 
 $ text{lift}(X => Y) = (2/9)/((4/9)*(3/9)) = 9/6 $
 
@@ -399,9 +392,7 @@ $ text{lift}(X => Y) = (2/9)/((4/9)*(3/9)) = 9/6 $
 == Conviction
 
 ..................................................
-$ text{conv}(X => Y) = (1 - text{supp}(Y))/(1 - text{conf}(X => Y))$ , i.e., the 
-ratio of the expected frequency that $X$ occurs without $Y$ if $X$ and $Y$ were independent
-to the observed frequency of incorrect predictions.
+$ text{conv}(X => Y) = (1 - text{supp}(Y))/(1 - text{conf}(X => Y))$
 
 $ X = {text{milk}, text{bread}} $
 $ Y = {text{jam}} $
