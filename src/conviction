@@ -67,7 +67,7 @@ done
 [ ! -d "${CORPUS}" ] && echo "'${CORPUS}' is not a directory or not found." && exit 1
 
 
-numerator=$(support -d "${CORPUS}" "${antecedent}" "${consequent}")
+numerator=$(support -d "${CORPUS}" "${consequent}")
 denominator=$(confidence -d "${CORPUS}" "${antecedent}" "${consequent}")
 
 dc <<< "10k 1 $numerator - 1 $denominator - /p"

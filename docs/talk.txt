@@ -305,8 +305,10 @@ $ t_4 = D = {text{ham}, text{steak}, text{chicken}, text{fish}} $
 $ t_5 = E = {text{milk}, text{bread}, text{eggs}} $
 $ t_6 = F = {text{butter}, text{bacon}} $
 $ t_7 = G = {text{milk}, text{bacon}, text{bread}, text{jam}, text{eggs}} $
+$ t_8 = H = {text{bacon}, text{bread}, text{butter}, text{eggs}, text{jam}} $
+$ t_9 = I = {text{bacon}, text{bread}, text{ham}, text{juice}, text{milk}, text{sausage}} $
 
-$ |T| = 7 $ for this example.
+$ |T| = 9 $ for this example.
 ..................................................
 
 
@@ -338,9 +340,9 @@ $ text{supp}(X) = (sum_(i=1)^n delta((X) sube t_i))/|T| $, i.e.,  the proportion
 
 $ X = {text{milk}, text{bread}} $
 
-$ X sube A, E, G $
+$ X sube A, E, G, I $
 
-$ text{supp}(X) = 3/7 $
+$ text{supp}(X) = 4/9 $
 ..................................................
 
 image:pic/figure-07.png[]
@@ -355,7 +357,7 @@ $ Y = {text{jam}} $
 
 $ X uu Y sube A, G $
 
-$ text{supp}(X => Y) = 2/7 $
+$ text{supp}(X => Y) = 2/9 $
 ..................................................
 
 image:pic/figure-08.png[]
@@ -369,10 +371,10 @@ $ text{conf}(X => Y) = (text{supp}(X uu Y))/(text{supp}(X))$ , i.e., how often $
 $ X = {text{milk}, text{bread}} $
 $ Y = {text{jam}} $
 
-$ X sube A, E, G $
+$ X sube A, E, G, I $
 $ X uu Y sube A, G $
 
-$ text{conf}(X => Y) = (2//7)/(3//7) = 2/3 $
+$ text{conf}(X => Y) = (2//9)/(4//9) = 2/4 $
 ..................................................
 
 image:pic/figure-09.png[]
@@ -386,11 +388,11 @@ $ text{lift}(X => Y) = (text{supp}(X uu Y))/(text{supp}(X)xxtext{supp}(Y))$
 $ X = {text{milk}, text{bread}} $
 $ Y = {text{jam}} $
 
-$ X sube A, E, G $
-$ Y sube A, G $
+$ X sube A, E, G, I $
+$ Y sube A, G, H $
 $ X uu Y sube A, G $
 
-$ text{lift}(X => Y) = (2/7)/((3/7)*(2/7)) = 7/3 $
+$ text{lift}(X => Y) = (2/9)/((4/9)*(3/9)) = 9/6 $
 
 ..................................................
 
@@ -404,11 +406,11 @@ to the observed frequency of incorrect predictions.
 $ X = {text{milk}, text{bread}} $
 $ Y = {text{jam}} $
 
-$ Y sube A, G $
-$ X sube A, E, G $
+$ X sube A, E, G, I $
+$ Y sube A, G, H $
 $ X uu Y sube A, G $
 
 
-$ text{conv}(X => Y) = (1 - 2/7)/(1 - 2/3) = (5//7)/(1//3) = 15/7 $
+$ text{conv}(X => Y) = (1 - 3/9)/(1 - 2/4) = (6//9)/(1//2) = 12/9 $
 ..................................................
 

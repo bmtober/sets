@@ -18,7 +18,8 @@ dcircle 200 141 140 gray55 B
 
 convert A.png B.png -compose xor -composite xorAB.png
 convert A.png B.png -compose out -composite outAB.png
-convert A.png B.png -compose in  -composite inAB.png
+convert A.png B.png -compose in -composite inAB.png
+convert inAB.png -gravity northwest -pointsize 25 -annotate +125+125 'bread\neggs' inAB.png
 convert A.png B.png -compose dstout  -composite dstoutAB.png
 convert A.png B.png -compose over  -composite overAB.png
 
