@@ -14,5 +14,6 @@ References
  http://en.wikipedia.org/wiki/Set_theory
  http://en.wikipedia.org/wiki/Association_rule_learning
  http://en.wikipedia.org/wiki/Precision_and_recall
+ http://michael.hahsler.net/research/association_rules/measures.html#lift
 
 
