@@ -442,10 +442,10 @@ $m_(01)$ = False Positive
 
 [cols="4*^.^", width="60%"]
 |======================
-2.2+| 2+|Predicted Condition 
-| $ not \{text\{jam\}\} $ | $ \{text\{jam\}\} $
-.2+|Actual Condition | $ not \{text\{jam\}\} $ | $B,C,D,F$ | $E,I,J$
-| $ \{text\{jam\}\} $ | $H$ |$ A,G $
+2.2+| 2+| 
+| $ text\{bread, milk\} notin t_i $ | $ text\{bread, milk} in t_i $
+.2+| | $ text\{jam\} notin t_i $ | $B,C,D,F$ | $E,I,J$
+| $ text\{jam\}\ in t_i $ | $H$ |$ A,G $
 |======================
 
 
