@@ -250,7 +250,7 @@ text{(butter, steak)}
 ..................................................
 $ D = {text{ham}, text{steak}, text{chicken}, text{fish}} $
 
-$text{power(D)} = {
+$ cc"P"(D)  = {
 text{{ham}},
 text{{steak	ham}},
 text{{steak}},
